@@ -1,5 +1,5 @@
 /* scrolling dish ticker */
-const mq = ["Butter Chicken Poutine","Tandoori Wings","The Garam Smash","Nizami Handi","Maritime Masala Bites","Naan Pull-Aparts","Masala Old Fashioned","Masala Steak Frites","Gulab Jamun Sticky Toffee","The Makhani Crunch"];
+const mq = ["Butter Chicken Poutine","Haveli Wings","The Garam Smash","Nizami Handi","Maritime Masala Bites","Naan Pull-Aparts","Masala Old Fashioned","Masala Steak Frites","Gulab Jamun Sticky Toffee","The Makhani Crunch"];
 const one = mq.map((d,i)=>`<span>${i%3===1?`<em>${d}</em>`:d}<svg><use href="#i-leaf"/></svg></span>`).join("");
 $("#marquee").innerHTML = one + one;
 
