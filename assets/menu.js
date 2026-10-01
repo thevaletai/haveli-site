@@ -25,7 +25,7 @@ const MENU = [
   ["The Chaat Stack","15","Aloo Tikki Sandwich","Potato-pea patty, tamarind, mint, slaw, sev.","v t"],
   ["The Garam Smash","18","Masala Smash Burger","Double patty, masala onions, cheddar, chutney mayo.","n t"],
   ["Skewer & Swirl","16","Seekh Kebab Naan Roll","Lamb-and-beef kebab, mint raita, pickled onion, naan.","n"]]},
- {id:"wings",t:"Wings",wings:1,note:"Fried crispy, then lightly tossed so the sauce stays on the wing. Raita and pickled onion on the side. Pick your flavour:",items:[
+ {id:"wings",t:"Wings",wings:1,note:"Marinated, very thinly breaded and fried super crispy, then hand-tossed in Chef Vic's signature blend. Juicy, meaty wings with some of the most meat on the bone in Fredericton. Raita and pickled onion on the side. Pick your flavour:",items:[
   ["Tandoori","","","Our classic tandoori spice, crisped in the tandoor instead of the fryer.","n t"],
   ["Butter Chicken","","","Our makhani gravy, reduced thick. Mild.","n t"],
   ["Honey Hot","","","Honey and chili, sticky with a kick.","n t h2"],
