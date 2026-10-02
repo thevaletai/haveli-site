@@ -27,3 +27,26 @@ $("#marquee").innerHTML = one + one;
     requestAnimationFrame(tick);
   }
 })();
+
+/* ================= LIVE PRICES =================
+   Dish cards read their prices from data/menu.json so admin edits show up here too. */
+(()=>{
+  const money = p => { p=(p||"").trim(); return !p ? "" : /^[+$]/.test(p) ? p : "$"+p };
+  const load = window.MENU_DATA ? Promise.resolve(window.MENU_DATA) : fetch("data/menu.json?v="+Date.now(),{cache:"no-store"}).then(r=>r.json());
+  load.then(d=>{
+    const items = {}; d.categories.forEach(c=>c.items.forEach(it=>{ items[it.name]=it }));
+    const cat = id => d.categories.find(c=>c.id===id);
+    document.querySelectorAll("[data-price-item]").forEach(el=>{
+      const it = items[el.dataset.priceItem];
+      if (it && it.price) el.textContent = money(it.price);
+    });
+    document.querySelectorAll("[data-price-option]").forEach(el=>{
+      const [id,i] = el.dataset.priceOption.split(":"); const o = cat(id)?.options?.list[+i];
+      if (o) el.innerHTML = esc(money(o.price)) + "<small>/lb</small>";
+    });
+    document.querySelectorAll("[data-options]").forEach(el=>{
+      const list = cat(el.dataset.options)?.options?.list;
+      if (list && list.length) el.innerHTML = list.map(o=>`<span><b>${esc(o.name)}</b>${esc(money(o.price))}</span>`).join("");
+    });
+  }).catch(()=>{ /* keep the prices already printed in the page */ });
+})();

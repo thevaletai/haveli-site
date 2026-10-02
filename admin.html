@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Menu Admin · Haveli</title>
+<link rel="icon" href="assets/logo-sm.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0b0907; --char:#15110d; --char-2:#1d1712; --line:rgba(212,162,76,.24); --line-2:rgba(212,162,76,.12);
+  --gold:#d9a94f; --gold-hi:#f7e08c; --cream:#f3e8d2; --muted:#a99c84; --bad:#ff7b66; --good:#8fc25e;
+  --goldgrad:linear-gradient(100deg,#8d5b1d,#d9a94f 25%,#f7e08c 50%,#d9a94f 70%,#a26a24);
+  --display:"Cinzel",Georgia,serif; --sans:"Jost",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ink);color:var(--cream);font:400 15px/1.5 var(--sans);min-height:100vh;padding-bottom:110px}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:2px;border-radius:6px}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+.hide{display:none!important}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:20;background:rgba(11,9,7,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;min-height:64px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.top img{height:38px}
+.top h1{font:700 15px/1 var(--display);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.top .sp{flex:1}
+.link{font-size:13px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.link:hover{color:var(--cream)}
+
+/* buttons + fields */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:0 18px;border-radius:999px;font:600 12px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold-hi);transition:.2s;white-space:nowrap}
+.btn:hover{background:rgba(217,169,79,.12)}
+.btn.gold{background:var(--goldgrad);color:#1a1006;border-color:transparent}
+.btn.gold:hover{filter:brightness(1.08)}
+.btn.small{min-height:34px;padding:0 13px;font-size:10.5px}
+.btn.danger{border-color:rgba(255,123,102,.5);color:var(--bad)}
+.btn.danger:hover{background:rgba(255,123,102,.1)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+input[type=text],input[type=password],input[type=search],select,textarea{width:100%;min-height:40px;padding:8px 12px;border-radius:9px;border:1px solid var(--line);background:#0f0c09;color:var(--cream);color-scheme:dark}
+textarea{min-height:64px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(217,169,79,.15)}
+label.f{display:flex;flex-direction:column;gap:5px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+label.chk{display:inline-flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;user-select:none}
+label.chk input{width:18px;height:18px;accent-color:var(--gold)}
+.icon{width:34px;height:34px;border-radius:8px;border:1px solid var(--line-2);display:inline-grid;place-items:center;color:var(--muted);font-size:15px;line-height:1}
+.icon:hover{border-color:var(--gold);color:var(--cream)}
+.icon.x:hover{border-color:var(--bad);color:var(--bad)}
+
+/* sign in */
+.signin{max-width:560px;margin:60px auto;padding:32px;border:1px solid var(--line);border-radius:18px;background:var(--char)}
+.signin h2{font:700 24px/1.2 var(--display);margin-bottom:10px}
+.signin p{color:var(--muted);margin-bottom:14px}
+.signin ol{color:var(--muted);margin:0 0 18px 20px;display:grid;gap:6px}
+.signin ol a{color:var(--gold-hi)}
+.signin code{background:#000;padding:1px 6px;border-radius:5px;color:var(--cream)}
+.signin .row{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
+.signin .row input{flex:1 1 260px}
+.msg{margin-top:12px;font-size:14px}
+.msg.bad{color:var(--bad)}.msg.good{color:var(--good)}
+
+/* toolbar */
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:22px 0 8px}
+.tools input{flex:1 1 240px}
+.hint{color:var(--muted);font-size:13.5px;margin-bottom:16px}
+
+/* categories */
+.cat{border:1px solid var(--line);border-radius:16px;background:var(--char);margin:14px 0;overflow:hidden}
+.cat.off{opacity:.6}
+.cat-h{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--char-2);border-bottom:1px solid var(--line-2)}
+.cat-h .tg{display:flex;align-items:center;gap:10px;flex:1;min-width:0;text-align:left}
+.cat-h .tg b{font:700 16px/1.2 var(--display);letter-spacing:.04em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cat-h .tg small{color:var(--muted);font-size:12.5px;white-space:nowrap}
+.cat-h .car{transition:transform .2s;color:var(--gold)}
+.cat.open .car{transform:rotate(90deg)}
+.cat-body{display:none;padding:14px}
+.cat.open .cat-body{display:block}
+.cat-settings{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:14px;border:1px dashed var(--line-2);border-radius:12px;margin-bottom:14px}
+.cat-settings .full{grid-column:1/-1}
+.opts{display:grid;gap:8px}
+.opt{display:grid;grid-template-columns:1fr 110px 34px;gap:8px}
+
+/* items */
+.item{border-bottom:1px solid var(--line-2);padding:10px 0}
+.item:last-of-type{border-bottom:0}
+.item.off .nm,.item.off .pr{opacity:.5;text-decoration:line-through}
+.irow{display:grid;grid-template-columns:1fr 120px auto;gap:8px;align-items:center}
+.irow .nm{font-weight:500}
+.pr-wrap{position:relative}
+.pr-wrap::before{content:"$";position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--gold);pointer-events:none}
+.pr-wrap input{padding-left:22px;font-weight:600;color:var(--gold-hi)}
+.iact{display:flex;gap:6px}
+.det{display:none;margin-top:10px;padding:14px;border-radius:12px;background:#110e0a;border:1px solid var(--line-2)}
+.item.exp .det{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.det .full{grid-column:1/-1}
+.det .flags{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:4px}
+.badges span{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.chg{box-shadow:inset 3px 0 0 var(--gold);padding-left:8px}
+.add-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+
+/* publish bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(21,17,13,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:12px 0 calc(12px + env(safe-area-inset-bottom))}
+.bar .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.bar .st{flex:1 1 220px;font-size:14px;color:var(--muted)}
+.bar .st b{color:var(--cream)}
+.bar .st.dirty b{color:var(--gold-hi)}
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%) translateY(20px);background:var(--char-2);border:1px solid var(--line);padding:12px 18px;border-radius:12px;opacity:0;transition:.3s;pointer-events:none;z-index:40;max-width:min(560px,92vw);text-align:center}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.toast.bad{border-color:var(--bad)}
+
+@media (max-width:640px){
+  .irow{grid-template-columns:1fr 96px}
+  .irow .iact{grid-column:1/-1;justify-content:flex-end}
+  .item.exp .det,.cat-settings{grid-template-columns:1fr}
+  .opt{grid-template-columns:1fr 90px 34px}
+  .cat-h .tg small{display:none}
+  .bar .st{flex-basis:100%}
+  .bar .btn{flex:1 1 0;min-width:0;padding:0 10px;font-size:10.5px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <img src="assets/logo-sm.webp" alt="Haveli">
+    <h1>Menu Admin</h1>
+    <span class="sp"></span>
+    <a class="link" href="menu.html" target="_blank" rel="noopener">View live menu ↗</a>
+    <button class="link hide" id="signOut">Sign out</button>
+  </div>
+</header>
+
+<!-- SIGN IN -->
+<section class="signin" id="signin">
+  <h2>Sign in to edit the menu</h2>
+  <p>Saving goes straight to the website, so this page needs a GitHub access key for the <code>haveli-site</code> project. You only set this up once per device.</p>
+  <ol>
+    <li>Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub → New fine-grained token</a> while signed in as <b>thevaletai</b>.</li>
+    <li>Name it “Haveli menu”. Under <b>Repository access</b> choose <b>Only select repositories → haveli-site</b>.</li>
+    <li>Under <b>Permissions → Repository permissions</b>, set <b>Contents</b> to <b>Read and write</b>.</li>
+    <li>Click <b>Generate token</b>, copy it and paste it below.</li>
+  </ol>
+  <label class="f" for="tok">Access key</label>
+  <div class="row">
+    <input type="password" id="tok" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
+    <button class="btn gold" id="signInBtn">Sign in</button>
+  </div>
+  <label class="chk" style="margin-top:12px"><input type="checkbox" id="remember" checked> Remember on this device</label>
+  <p class="msg" id="signMsg"></p>
+</section>
+
+<!-- EDITOR -->
+<main class="wrap hide" id="editor">
+  <div class="tools">
+    <input type="search" id="find" placeholder="Find an item…" autocomplete="off">
+    <button class="btn small" id="expandAll">Open all</button>
+    <button class="btn small" id="collapseAll">Close all</button>
+  </div>
+  <p class="hint">Change prices right in the price boxes. Use <b>Edit</b> for descriptions, labels and spice level. Nothing goes live until you press <b>Publish</b>.</p>
+  <div id="cats"></div>
+  <div class="add-row"><button class="btn" id="addCat">+ Add category</button><button class="btn" id="dlBackup">Download backup</button></div>
+</main>
+
+<div class="bar hide" id="bar">
+  <div class="wrap">
+    <div class="st" id="status"><b>Up to date</b> · matches the live site</div>
+    <button class="btn" id="discard" disabled>Undo all changes</button>
+    <button class="btn gold" id="publish" disabled>Publish to website</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ================= CONFIG ================= */
+const OWNER = "thevaletai", REPO = "haveli-site", BRANCH = "main", PATH = "data/menu.json";
+const API = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${PATH}`;
+const KEY_TOKEN = "haveli-admin-token", KEY_DRAFT = "haveli-admin-draft";
+
+/* ================= HELPERS ================= */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store = { get(k){ try{ return localStorage.getItem(k) }catch{ return null } }, set(k,v){ try{ localStorage.setItem(k,v) }catch{} }, del(k){ try{ localStorage.removeItem(k) }catch{} } };
+const b64decode = b64 => new TextDecoder().decode(Uint8Array.from(atob(b64.replace(/\n/g,"")), c=>c.charCodeAt(0)));
+const b64encode = str => { const bytes = new TextEncoder().encode(str); let bin=""; bytes.forEach(b=>bin+=String.fromCharCode(b)); return btoa(bin); };
+const clone = o => JSON.parse(JSON.stringify(o));
+const slug = s => (s||"").toLowerCase().replace(/&/g,"and").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"") || "section";
+let toastT;
+function toast(msg, bad){ const t=$("#toast"); t.textContent=msg; t.classList.toggle("bad",!!bad); t.classList.add("on"); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove("on"), bad?6000:3500); }
+
+/* ================= STATE ================= */
+let token = "", sha = "", live = null, menu = null;
+const open = new Set();      // open category indexes
+const expanded = new Set();  // "c:i" items with details open
+
+/* ================= GITHUB ================= */
+async function gh(method, body){
+  const r = await fetch(API + (method==="GET" ? `?ref=${BRANCH}&t=${Date.now()}` : ""), {
+    method, cache:"no-store",
+    headers:{ "Authorization":`Bearer ${token}`, "Accept":"application/vnd.github+json", "X-GitHub-Api-Version":"2022-11-28", ...(body?{"Content-Type":"application/json"}:{}) },
+    body: body ? JSON.stringify(body) : undefined
+  });
+  if (!r.ok){ const e = new Error(`GitHub ${r.status}`); e.status = r.status; try{ e.detail=(await r.json()).message }catch{} throw e; }
+  return r.json();
+}
+async function loadRemote(){
+  const f = await gh("GET");
+  sha = f.sha; live = JSON.parse(b64decode(f.content));
+}
+
+/* ================= SIGN IN ================= */
+async function signIn(t, quiet){
+  token = t.trim(); const m=$("#signMsg");
+  if (!token){ m.textContent="Paste your access key first."; m.className="msg bad"; return; }
+  m.textContent="Checking…"; m.className="msg";
+  try{
+    await loadRemote();
+    if ($("#remember").checked || quiet) store.set(KEY_TOKEN, token);
+    // bring back an unpublished draft if it was made against this same version
+    const d = store.get(KEY_DRAFT); let restored = false;
+    if (d){ try{ const dr=JSON.parse(d); if (dr.sha===sha && JSON.stringify(dr.menu)!==JSON.stringify(live)){ menu=dr.menu; restored=true; } }catch{} }
+    if (!restored){ menu = clone(live); store.del(KEY_DRAFT); }
+    $("#signin").classList.add("hide"); ["#editor","#bar","#signOut"].forEach(s=>$(s).classList.remove("hide"));
+    render(); if (restored) toast("Restored your unpublished changes from last time.");
+  }catch(e){
+    token=""; if (quiet){ store.del(KEY_TOKEN); }
+    m.className="msg bad";
+    m.textContent = e.status===401 ? "That access key wasn't accepted. Check it was copied in full and hasn't expired."
+      : e.status===404 || e.status===403 ? "That key can't see the haveli-site project. Make sure it has haveli-site selected with Contents: Read and write."
+      : "Couldn't reach GitHub. Check your internet connection and try again.";
+  }
+}
+$("#signInBtn").onclick = ()=>signIn($("#tok").value);
+$("#tok").addEventListener("keydown", e=>{ if(e.key==="Enter") signIn($("#tok").value) });
+$("#signOut").onclick = ()=>{
+  if (isDirty() && !confirm("You have unpublished changes. Sign out anyway? (They'll be kept on this device.)")) return;
+  store.del(KEY_TOKEN); location.reload();
+};
+
+/* ================= CHANGE TRACKING ================= */
+const isDirty = () => menu && live && JSON.stringify(menu) !== JSON.stringify(live);
+function countChanges(){
+  if (!isDirty()) return 0;
+  const key = (c,it) => c.id+"|"+it.name;
+  const a = new Map(), b = new Map(); let n = 0;
+  live.categories.forEach(c=>c.items.forEach(it=>a.set(key(c,it),JSON.stringify(it))));
+  menu.categories.forEach(c=>c.items.forEach(it=>b.set(key(c,it),JSON.stringify(it))));
+  b.forEach((v,k)=>{ if (a.get(k)!==v) n++ }); a.forEach((v,k)=>{ if (!b.has(k)) n++ });
+  const catMeta = c => JSON.stringify({...c, items: c.items.map(i=>i.name)});
+  if (JSON.stringify(live.categories.map(catMeta)) !== JSON.stringify(menu.categories.map(catMeta)) && n===0) n = 1;
+  return n || 1;
+}
+function liveItem(c, it){
+  const lc = live.categories.find(x=>x.id===c.id); return lc && lc.items.find(x=>x.name===it.name);
+}
+function changed(){
+  const n = countChanges(), st=$("#status");
+  st.classList.toggle("dirty", n>0);
+  st.innerHTML = n ? `<b>${n} unpublished change${n>1?"s":""}</b> · not on the website yet` : `<b>Up to date</b> · matches the live site`;
+  $("#publish").disabled = !n; $("#discard").disabled = !n;
+  if (n) store.set(KEY_DRAFT, JSON.stringify({sha, menu})); else store.del(KEY_DRAFT);
+}
+addEventListener("beforeunload", e=>{ if (isDirty()){ e.preventDefault(); e.returnValue=""; } });
+
+/* ================= RENDER ================= */
+const typeLabel = {veg:"Vegetarian", meat:"Meat / fish", protein:"Choose protein"};
+function itemHtml(c, ci, it, ii){
+  const k=ci+":"+ii, lv=liveItem(c,it), diff = !lv || JSON.stringify(lv)!==JSON.stringify(it);
+  const badges=[typeLabel[it.type]||"Vegetarian", it.twist&&"Canadian twist", it.chefsPick&&"Chef's pick", it.heat&&["","Medium","Med-hot","Very hot"][it.heat], it.hidden&&"Hidden"].filter(Boolean);
+  return `<div class="item${expanded.has(k)?" exp":""}${it.hidden?" off":""}${diff?" chg":""}" data-c="${ci}" data-i="${ii}">
+    <div class="irow">
+      <div><input type="text" class="nm" data-f="name" value="${esc(it.name)}" aria-label="Item name"><div class="badges">${badges.map(b=>`<span>${esc(b)}</span>`).join("")}</div></div>
+      <div class="pr-wrap"><input type="text" class="pr" data-f="price" value="${esc(it.price)}" inputmode="decimal" aria-label="Price for ${esc(it.name)}" placeholder="—"></div>
+      <div class="iact">
+        <button class="btn small" data-a="toggle">${expanded.has(k)?"Done":"Edit"}</button>
+        <button class="icon" data-a="up" title="Move up" aria-label="Move up">↑</button>
+        <button class="icon" data-a="down" title="Move down" aria-label="Move down">↓</button>
+        <button class="icon x" data-a="del" title="Delete item" aria-label="Delete item">✕</button>
+      </div>
+    </div>
+    <div class="det">
+      <label class="f">Also known as<input type="text" data-f="aka" value="${esc(it.aka)}" placeholder="e.g. Dahi Puri"></label>
+      <label class="f">Type<select data-f="type">${Object.entries(typeLabel).map(([v,l])=>`<option value="${v}"${(it.type||"veg")===v?" selected":""}>${l}</option>`).join("")}</select></label>
+      <label class="f full">Description<textarea data-f="desc" placeholder="What's in it">${esc(it.desc)}</textarea></label>
+      <label class="f">Spice level<select data-f="heat">${["None / mild","Medium","Medium-hot","Very hot"].map((l,v)=>`<option value="${v}"${(it.heat||0)===v?" selected":""}>${l}</option>`).join("")}</select></label>
+      <div class="flags full">
+        <label class="chk"><input type="checkbox" data-f="twist"${it.twist?" checked":""}> Canadian twist</label>
+        <label class="chk"><input type="checkbox" data-f="chefsPick"${it.chefsPick?" checked":""}> Chef's pick</label>
+        <label class="chk"><input type="checkbox" data-f="hidden"${it.hidden?" checked":""}> Hide from menu (sold out / seasonal)</label>
+      </div>
+    </div>
+  </div>`;
+}
+function catHtml(c, ci){
+  const q=$("#find").value.trim().toLowerCase();
+  const items = c.items.map((it,ii)=>({it,ii})).filter(({it})=>!q || [it.name,it.aka,it.desc].join(" ").toLowerCase().includes(q));
+  if (q && !items.length) return "";
+  const isOpen = open.has(ci) || !!q;
+  return `<section class="cat${isOpen?" open":""}${c.hidden?" off":""}" data-c="${ci}">
+    <div class="cat-h">
+      <button class="tg" data-a="openCat" aria-expanded="${isOpen}"><span class="car">▸</span><b>${esc(c.title||"Untitled")}</b><small>${c.items.length} item${c.items.length===1?"":"s"}${c.hidden?" · hidden":""}</small></button>
+      <button class="icon" data-a="catUp" title="Move category up" aria-label="Move category up">↑</button>
+      <button class="icon" data-a="catDown" title="Move category down" aria-label="Move category down">↓</button>
+    </div>
+    <div class="cat-body">
+      <details class="cat-settings-wrap"${c.title?"":" open"}>
+        <summary class="link" style="cursor:pointer;margin-bottom:10px">Category settings</summary>
+        <div class="cat-settings">
+          <label class="f">Category name<input type="text" data-cf="title" value="${esc(c.title)}"></label>
+          <div class="flags" style="display:flex;gap:16px;align-items:end;flex-wrap:wrap">
+            <label class="chk"><input type="checkbox" data-cf="isNew"${c.isNew?" checked":""}> “New” badge</label>
+            <label class="chk"><input type="checkbox" data-cf="hidden"${c.hidden?" checked":""}> Hide category</label>
+          </div>
+          <label class="f full">Note under the heading<textarea data-cf="note">${esc(c.note)}</textarea></label>
+          <div class="full">
+            <label class="f" style="margin-bottom:8px">Price options (e.g. proteins or sizes)<input type="text" data-cf="optLabel" value="${esc(c.options?.label)}" placeholder="Heading, e.g. Choose your protein"></label>
+            <div class="opts">${(c.options?.list||[]).map((o,oi)=>`<div class="opt" data-o="${oi}">
+              <input type="text" data-of="name" value="${esc(o.name)}" placeholder="Name" aria-label="Option name">
+              <div class="pr-wrap"><input type="text" class="pr" data-of="price" value="${esc(o.price)}" placeholder="—" aria-label="Option price"></div>
+              <button class="icon x" data-a="optDel" aria-label="Remove option">✕</button></div>`).join("")}</div>
+            <button class="btn small" data-a="optAdd" style="margin-top:8px">+ Add option</button>
+          </div>
+          <div class="full"><button class="btn small danger" data-a="catDel">Delete this category</button></div>
+        </div>
+      </details>
+      ${items.map(({it,ii})=>itemHtml(c,ci,it,ii)).join("")}
+      ${q?"":`<div class="add-row"><button class="btn small" data-a="add">+ Add item to ${esc(c.title||"this category")}</button></div>`}
+    </div>
+  </section>`;
+}
+function render(){
+  const y=scrollY;
+  $("#cats").innerHTML = menu.categories.map(catHtml).join("") || `<p class="hint">No items match “${esc($("#find").value)}”.</p>`;
+  scrollTo(0,y); changed();
+}
+
+/* ================= EDITING ================= */
+const catOf = el => menu.categories[+el.closest("[data-c]").dataset.c];
+const itemOf = el => { const r=el.closest(".item"); return r && menu.categories[+r.dataset.c].items[+r.dataset.i]; };
+function setField(obj, f, el){
+  let v = el.type==="checkbox" ? el.checked : el.value;
+  if (f==="heat"){ v=+v; if(!v){ delete obj.heat; return } }
+  if (f==="price" && typeof v==="string") v = v.replace(/^\s*\$\s*/,"").trim();
+  if (v===false || v===""){ if (f!=="price" && f!=="name") { delete obj[f]; return } }
+  obj[f]=v;
+}
+$("#cats").addEventListener("input", e=>{
+  const el=e.target;
+  if (el.dataset.f){ setField(itemOf(el), el.dataset.f, el); if (el.type!=="text" && el.tagName!=="TEXTAREA") render(); else changed(); return; }
+  if (el.dataset.cf){
+    const c=catOf(el), f=el.dataset.cf;
+    if (f==="optLabel"){ c.options = c.options || {label:"",list:[]}; c.options.label=el.value; }
+    else if (f==="isNew"||f==="hidden"){ if (el.checked) c[f]=true; else delete c[f]; render(); return; }
+    else if (el.value) c[f]=el.value; else delete c[f];
+    if (f==="title"){ el.closest(".cat").querySelector(".tg b").textContent = el.value || "Untitled"; }
+    changed(); return;
+  }
+  if (el.dataset.of){
+    const c=catOf(el), o=c.options.list[+el.closest("[data-o]").dataset.o];
+    o[el.dataset.of] = el.dataset.of==="price" ? el.value.replace(/^\s*\$\s*/,"") : el.value; changed();
+  }
+});
+$("#cats").addEventListener("change", e=>{ if (e.target.dataset.f==="price" || e.target.dataset.f==="name") render(); });
+$("#cats").addEventListener("click", e=>{
+  const b=e.target.closest("[data-a]"); if(!b) return;
+  const a=b.dataset.a, ci=+b.closest("[data-c]").dataset.c, c=menu.categories[ci];
+  const row=b.closest(".item"), ii=row?+row.dataset.i:-1, swap=(arr,i,j)=>{ if(j<0||j>=arr.length) return false; [arr[i],arr[j]]=[arr[j],arr[i]]; return true };
+  if (a==="openCat"){ open.has(ci)?open.delete(ci):open.add(ci); return render(); }
+  if (a==="toggle"){ const k=ci+":"+ii; expanded.has(k)?expanded.delete(k):expanded.add(k); return render(); }
+  if (a==="up"||a==="down"){ if (swap(c.items,ii,a==="up"?ii-1:ii+1)) { expanded.clear(); render(); } return; }
+  if (a==="del"){ if (confirm(`Delete “${c.items[ii].name||"this item"}”?`)){ c.items.splice(ii,1); expanded.clear(); render(); } return; }
+  if (a==="add"){ c.items.push({name:"New item",price:"",type:"veg"}); expanded.clear(); expanded.add(ci+":"+(c.items.length-1)); render();
+    const r=document.querySelector(`.item[data-c="${ci}"][data-i="${c.items.length-1}"] .nm`); r.focus(); r.select(); return; }
+  if (a==="catUp"||a==="catDown"){ if (swap(menu.categories,ci,a==="catUp"?ci-1:ci+1)){ open.clear(); expanded.clear(); render(); } return; }
+  if (a==="catDel"){ if (confirm(`Delete the whole “${c.title}” category and its ${c.items.length} items?`)){ menu.categories.splice(ci,1); open.clear(); expanded.clear(); render(); } return; }
+  if (a==="optAdd"){ c.options = c.options || {label:"",list:[]}; c.options.list.push({name:"",price:""}); return render(); }
+  if (a==="optDel"){ c.options.list.splice(+b.closest("[data-o]").dataset.o,1); if (!c.options.list.length && !c.options.label) delete c.options; return render(); }
+});
+$("#find").addEventListener("input", render);
+$("#expandAll").onclick = ()=>{ menu.categories.forEach((_,i)=>open.add(i)); render(); };
+$("#collapseAll").onclick = ()=>{ open.clear(); expanded.clear(); render(); };
+$("#addCat").onclick = ()=>{
+  const title = prompt("Name for the new category:", ""); if (!title) return;
+  let id=slug(title), n=2; while (menu.categories.some(c=>c.id===id)) id=slug(title)+"-"+n++;
+  menu.categories.push({id, title, items:[]}); open.add(menu.categories.length-1); render();
+  document.querySelector(`.cat[data-c="${menu.categories.length-1}"]`).scrollIntoView({behavior:"smooth",block:"center"});
+};
+$("#discard").onclick = ()=>{ if (confirm("Undo every change since the last publish?")){ menu=clone(live); expanded.clear(); render(); toast("Changes undone."); } };
+$("#dlBackup").onclick = ()=>{
+  const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([JSON.stringify(menu,null,2)],{type:"application/json"}));
+  a.download=`haveli-menu-${new Date().toISOString().slice(0,10)}.json`; a.click(); URL.revokeObjectURL(a.href);
+};
+
+/* ================= PUBLISH ================= */
+function problems(){
+  const out=[];
+  menu.categories.forEach(c=>{
+    if (!c.title?.trim()) out.push("A category has no name.");
+    c.items.forEach(it=>{ if (!it.name?.trim()) out.push(`An item in “${c.title}” has no name.`); });
+  });
+  return out;
+}
+$("#publish").onclick = async ()=>{
+  const p=problems(); if (p.length){ toast(p[0], true); return; }
+  const btn=$("#publish"); btn.disabled=true; btn.textContent="Publishing…";
+  const n=countChanges();
+  const data = {...clone(menu), updated: new Date().toISOString().slice(0,10)};
+  try{
+    const r = await gh("PUT", { message:`Menu update from admin (${n} change${n>1?"s":""})`, content: b64encode(JSON.stringify(data,null,2)+"\n"), sha, branch:BRANCH });
+    sha = r.content.sha; live = clone(data); menu = clone(data); store.del(KEY_DRAFT);
+    render(); toast("Published! The website will show the new menu in about a minute.");
+  }catch(e){
+    if (e.status===409 || e.status===422){
+      toast("The menu was changed somewhere else since you opened it. Your edits are saved on this device. Reload the page to see the latest version, then make your changes again.", true);
+    } else if (e.status===401){ toast("Your access key expired or was removed. Sign out and sign in with a new one.", true); }
+    else toast("Couldn't publish. Check your connection and try again. Your changes are still here.", true);
+  }finally{ btn.textContent="Publish to website"; changed(); }
+};
+
+/* auto sign-in on a remembered device */
+const saved = store.get(KEY_TOKEN);
+if (saved){ $("#tok").value=""; signIn(saved, true); }
+</script>
+</body>
+</html>

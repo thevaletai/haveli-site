@@ -8,6 +8,8 @@ names = {'index.html': 'haveli-home.html', 'menu.html': 'haveli-menu.html', 'gui
 for src, out in names.items():
     s = open(src).read()
     s = s.replace('<link rel="stylesheet" href="assets/site.css">', f'<style>\n{css}</style>')
+    # standalone copies can't fetch data/menu.json from disk, so embed the menu data
+    s = s.replace('<script src="assets/site.js"></script>', '<script>window.MENU_DATA=' + open('data/menu.json').read().strip() + ';</script>\n<script src="assets/site.js"></script>')
     s = re.sub(r'<script src="(assets/[\w-]+\.js)"></script>', lambda m: f'<script>\n{open(m.group(1)).read()}</script>', s)
     s = re.sub(r'assets/[\w-]+\.webp', lambda m: uri(m.group(0)), s)
     for a, b in names.items():
