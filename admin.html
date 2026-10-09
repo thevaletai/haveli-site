@@ -85,6 +85,13 @@ label.chk input{width:18px;height:18px;accent-color:var(--gold)}
 .opts{display:grid;gap:8px}
 .opt{display:grid;grid-template-columns:1fr 110px 34px;gap:8px}
 
+/* ordering choices */
+.groups{display:grid;gap:10px}
+.grp{border:1px solid var(--line-2);border-radius:12px;padding:12px;background:#0d0a08;display:grid;gap:8px}
+.grp-h{display:grid;grid-template-columns:1fr 1.3fr 34px;gap:8px}
+.grp .opt{grid-template-columns:1fr 110px 34px}
+@media (max-width:640px){.grp-h{grid-template-columns:1fr 34px}.grp-h select{grid-column:1/-1;grid-row:2}}
+
 /* items */
 .item{border-bottom:1px solid var(--line-2);padding:10px 0}
 .item:last-of-type{border-bottom:0}
@@ -94,6 +101,7 @@ label.chk input{width:18px;height:18px;accent-color:var(--gold)}
 .pr-wrap{position:relative}
 .pr-wrap::before{content:"$";position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--gold);pointer-events:none}
 .pr-wrap input{padding-left:22px;font-weight:600;color:var(--gold-hi)}
+.pr-wrap input[readonly]{opacity:.7;cursor:help}
 .iact{display:flex;gap:6px}
 .det{display:none;margin-top:10px;padding:14px;border-radius:12px;background:#110e0a;border:1px solid var(--line-2)}
 .item.exp .det{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -269,14 +277,34 @@ function changed(){
 addEventListener("beforeunload", e=>{ if (isDirty()){ e.preventDefault(); e.returnValue=""; } });
 
 /* ================= RENDER ================= */
+const groupTypes = {size:"Pick one: sets the price (sizes, fillings)", choice:"Pick one: no extra cost (flavours, dips)", addon:"Add-ons: adds to the price"};
+function groupsEditor(groups, owner){
+  return `<div class="groups" data-owner="${owner}">
+    ${(groups||[]).map((g,gi)=>`<div class="grp" data-g="${gi}">
+      <div class="grp-h">
+        <input type="text" data-gf="label" value="${esc(g.label)}" placeholder="Heading, e.g. Size or Flavour" aria-label="Choice heading">
+        <select data-gf="type" aria-label="How this choice works">${Object.entries(groupTypes).map(([v,l])=>`<option value="${v}"${g.type===v?" selected":""}>${l}</option>`).join("")}</select>
+        <button class="icon x" data-a="gDel" title="Remove this choice" aria-label="Remove this choice">✕</button>
+      </div>
+      ${g.type==="choice"?`<label class="chk"><input type="checkbox" data-gf="required"${g.required!==false?" checked":""}> Customer must pick one</label>`:""}
+      ${g.type==="addon"?`<label class="chk"><input type="checkbox" data-gf="single"${g.single?" checked":""}> Only one add-on allowed</label>`:""}
+      <div class="opts">${g.list.map((o,oi)=>`<div class="opt" data-o="${oi}">
+        <input type="text" data-of="name" value="${esc(o.name)}" placeholder="Option name" aria-label="Option name">
+        ${g.type==="choice"?`<span></span>`:`<div class="pr-wrap"><input type="text" class="pr" data-of="price" value="${esc(o.price)}" placeholder="${g.type==="addon"?"+0":"—"}" aria-label="Option price"></div>`}
+        <button class="icon x" data-a="oDel" aria-label="Remove option">✕</button></div>`).join("")}</div>
+      <button class="btn small" data-a="oAdd" style="margin-top:8px">+ Add option</button>
+    </div>`).join("")}
+    <button class="btn small" data-a="gAdd">+ Add a choice for ordering</button>
+  </div>`;
+}
 const typeLabel = {veg:"Vegetarian", meat:"Meat / fish", protein:"Choose protein"};
 function itemHtml(c, ci, it, ii){
   const k=ci+":"+ii, lv=liveItem(c,it), diff = !lv || JSON.stringify(lv)!==JSON.stringify(it);
-  const badges=[typeLabel[it.type]||"Vegetarian", it.twist&&"Canadian twist", it.chefsPick&&"Chef's pick", it.heat&&["","Medium","Med-hot","Very hot"][it.heat], it.hidden&&"Hidden"].filter(Boolean);
+  const badges=[typeLabel[it.type]||"Vegetarian", it.twist&&"Canadian twist", it.chefsPick&&"Favourite", it.heat&&["","Medium","Hot","Double hot"][it.heat], it.hidden&&"Hidden"].filter(Boolean);
   return `<div class="item${expanded.has(k)?" exp":""}${it.hidden?" off":""}${diff?" chg":""}" data-c="${ci}" data-i="${ii}">
     <div class="irow">
       <div><input type="text" class="nm" data-f="name" value="${esc(it.name)}" aria-label="Item name"><div class="badges">${badges.map(b=>`<span>${esc(b)}</span>`).join("")}</div></div>
-      <div class="pr-wrap"><input type="text" class="pr" data-f="price" value="${esc(it.price)}" inputmode="decimal" aria-label="Price for ${esc(it.name)}" placeholder="—"></div>
+      ${(it.groups||[]).some(g=>g.type==="size")?`<div class="pr-wrap" title="Set by the size options under Edit"><input type="text" class="pr" value="${esc((it.groups.find(g=>g.type==="size").list||[]).map(o=>o.price).join(" / "))}" readonly aria-label="Price for ${esc(it.name)}, set by its size options"></div>`:`<div class="pr-wrap"><input type="text" class="pr" data-f="price" value="${esc(it.price)}" inputmode="decimal" aria-label="Price for ${esc(it.name)}" placeholder="—"></div>`}
       <div class="iact">
         <button class="btn small" data-a="toggle">${expanded.has(k)?"Done":"Edit"}</button>
         <button class="icon" data-a="up" title="Move up" aria-label="Move up">↑</button>
@@ -288,12 +316,13 @@ function itemHtml(c, ci, it, ii){
       <label class="f">Also known as<input type="text" data-f="aka" value="${esc(it.aka)}" placeholder="e.g. Dahi Puri"></label>
       <label class="f">Type<select data-f="type">${Object.entries(typeLabel).map(([v,l])=>`<option value="${v}"${(it.type||"veg")===v?" selected":""}>${l}</option>`).join("")}</select></label>
       <label class="f full">Description<textarea data-f="desc" placeholder="What's in it">${esc(it.desc)}</textarea></label>
-      <label class="f">Spice level<select data-f="heat">${["None / mild","Medium","Medium-hot","Very hot"].map((l,v)=>`<option value="${v}"${(it.heat||0)===v?" selected":""}>${l}</option>`).join("")}</select></label>
+      <label class="f">Spice level<select data-f="heat">${["Mild (no flame)","Medium","Hot","Double hot"].map((l,v)=>`<option value="${v}"${(it.heat||0)===v?" selected":""}>${l}</option>`).join("")}</select></label>
       <div class="flags full">
         <label class="chk"><input type="checkbox" data-f="twist"${it.twist?" checked":""}> Canadian twist</label>
-        <label class="chk"><input type="checkbox" data-f="chefsPick"${it.chefsPick?" checked":""}> Chef's pick</label>
+        <label class="chk"><input type="checkbox" data-f="chefsPick"${it.chefsPick?" checked":""}> Favourite</label>
         <label class="chk"><input type="checkbox" data-f="hidden"${it.hidden?" checked":""}> Hide from menu (sold out / seasonal)</label>
       </div>
+      <div class="full"><span class="f" style="margin-bottom:8px;display:block">Choices when ordering</span>${groupsEditor(it.groups,"item")}</div>
     </div>
   </div>`;
 }
@@ -319,12 +348,7 @@ function catHtml(c, ci){
           </div>
           <label class="f full">Note under the heading<textarea data-cf="note">${esc(c.note)}</textarea></label>
           <div class="full">
-            <label class="f" style="margin-bottom:8px">Price options (e.g. proteins or sizes)<input type="text" data-cf="optLabel" value="${esc(c.options?.label)}" placeholder="Heading, e.g. Choose your protein"></label>
-            <div class="opts">${(c.options?.list||[]).map((o,oi)=>`<div class="opt" data-o="${oi}">
-              <input type="text" data-of="name" value="${esc(o.name)}" placeholder="Name" aria-label="Option name">
-              <div class="pr-wrap"><input type="text" class="pr" data-of="price" value="${esc(o.price)}" placeholder="—" aria-label="Option price"></div>
-              <button class="icon x" data-a="optDel" aria-label="Remove option">✕</button></div>`).join("")}</div>
-            <button class="btn small" data-a="optAdd" style="margin-top:8px">+ Add option</button>
+            <span class="f" style="margin-bottom:8px;display:block">Choices for every item in this category (e.g. Add a protein)</span>${groupsEditor(c.groups,"cat")}
           </div>
           <div class="full"><button class="btn small danger" data-a="catDel">Delete this category</button></div>
         </div>
@@ -343,6 +367,8 @@ function render(){
 /* ================= EDITING ================= */
 const catOf = el => menu.categories[+el.closest("[data-c]").dataset.c];
 const itemOf = el => { const r=el.closest(".item"); return r && menu.categories[+r.dataset.c].items[+r.dataset.i]; };
+const ownerOf = el => el.closest("[data-owner]").dataset.owner==="item" ? itemOf(el) : catOf(el);
+const groupOf = el => { const o=ownerOf(el), g=el.closest("[data-g]"); return o && g && o.groups[+g.dataset.g]; };
 function setField(obj, f, el){
   let v = el.type==="checkbox" ? el.checked : el.value;
   if (f==="heat"){ v=+v; if(!v){ delete obj.heat; return } }
@@ -352,21 +378,30 @@ function setField(obj, f, el){
 }
 $("#cats").addEventListener("input", e=>{
   const el=e.target;
-  if (el.dataset.f){ setField(itemOf(el), el.dataset.f, el); if (el.type!=="text" && el.tagName!=="TEXTAREA") render(); else changed(); return; }
+  if (el.dataset.f && !el.closest('.groups')){ setField(itemOf(el), el.dataset.f, el); if (el.type!=="text" && el.tagName!=="TEXTAREA") render(); else changed(); return; }
   if (el.dataset.cf){
     const c=catOf(el), f=el.dataset.cf;
-    if (f==="optLabel"){ c.options = c.options || {label:"",list:[]}; c.options.label=el.value; }
-    else if (f==="isNew"||f==="hidden"){ if (el.checked) c[f]=true; else delete c[f]; render(); return; }
+    if (f==="isNew"||f==="hidden"){ if (el.checked) c[f]=true; else delete c[f]; render(); return; }
     else if (el.value) c[f]=el.value; else delete c[f];
     if (f==="title"){ el.closest(".cat").querySelector(".tg b").textContent = el.value || "Untitled"; }
     changed(); return;
   }
-  if (el.dataset.of){
-    const c=catOf(el), o=c.options.list[+el.closest("[data-o]").dataset.o];
-    o[el.dataset.of] = el.dataset.of==="price" ? el.value.replace(/^\s*\$\s*/,"") : el.value; changed();
+  if (el.dataset.gf || el.dataset.of){
+    const g = groupOf(el); if (!g) return;
+    if (el.dataset.gf){
+      const f=el.dataset.gf;
+      if (f==="label") g.label=el.value;
+      else if (f==="type"){ g.type=el.value; delete g.required; delete g.single; if (g.type==="choice") g.list.forEach(o=>delete o.price); render(); }
+      else if (f==="required"){ if (el.checked) delete g.required; else g.required=false; }
+      else if (f==="single"){ if (el.checked) g.single=true; else delete g.single; }
+    } else {
+      const o=g.list[+el.closest("[data-o]").dataset.o];
+      o[el.dataset.of] = el.dataset.of==="price" ? el.value.replace(/^\s*[+$]*\s*/,"").trim() : el.value;
+    }
+    changed();
   }
 });
-$("#cats").addEventListener("change", e=>{ if (e.target.dataset.f==="price" || e.target.dataset.f==="name") render(); });
+$("#cats").addEventListener("change", e=>{ if (e.target.dataset.f==="price" || e.target.dataset.f==="name" || e.target.dataset.of==="price") render(); });
 $("#cats").addEventListener("click", e=>{
   const b=e.target.closest("[data-a]"); if(!b) return;
   const a=b.dataset.a, ci=+b.closest("[data-c]").dataset.c, c=menu.categories[ci];
@@ -379,8 +414,10 @@ $("#cats").addEventListener("click", e=>{
     const r=document.querySelector(`.item[data-c="${ci}"][data-i="${c.items.length-1}"] .nm`); r.focus(); r.select(); return; }
   if (a==="catUp"||a==="catDown"){ if (swap(menu.categories,ci,a==="catUp"?ci-1:ci+1)){ open.clear(); expanded.clear(); render(); } return; }
   if (a==="catDel"){ if (confirm(`Delete the whole “${c.title}” category and its ${c.items.length} items?`)){ menu.categories.splice(ci,1); open.clear(); expanded.clear(); render(); } return; }
-  if (a==="optAdd"){ c.options = c.options || {label:"",list:[]}; c.options.list.push({name:"",price:""}); return render(); }
-  if (a==="optDel"){ c.options.list.splice(+b.closest("[data-o]").dataset.o,1); if (!c.options.list.length && !c.options.label) delete c.options; return render(); }
+  if (a==="gAdd"){ const o=ownerOf(b); o.groups=o.groups||[]; o.groups.push({label:"",type:"choice",list:[{name:""}]}); return render(); }
+  if (a==="gDel"){ const o=ownerOf(b); if (!confirm("Remove this choice and its options?")) return; o.groups.splice(+b.closest("[data-g]").dataset.g,1); if (!o.groups.length) delete o.groups; return render(); }
+  if (a==="oAdd"){ const g=groupOf(b); g.list.push(g.type==="choice"?{name:""}:{name:"",price:""}); return render(); }
+  if (a==="oDel"){ const g=groupOf(b); g.list.splice(+b.closest("[data-o]").dataset.o,1); return render(); }
 });
 $("#find").addEventListener("input", render);
 $("#expandAll").onclick = ()=>{ menu.categories.forEach((_,i)=>open.add(i)); render(); };
@@ -411,6 +448,7 @@ $("#publish").onclick = async ()=>{
   const btn=$("#publish"); btn.disabled=true; btn.textContent="Publishing…";
   const n=countChanges();
   const data = {...clone(menu), updated: new Date().toISOString().slice(0,10)};
+  data.categories.forEach(c=>{ delete c.options; (c.groups||[]).concat(...c.items.map(i=>i.groups||[])).forEach(g=>{ g.list=g.list.filter(o=>o.name.trim()); }); });
   try{
     const r = await gh("PUT", { message:`Menu update from admin (${n} change${n>1?"s":""})`, content: b64encode(JSON.stringify(data,null,2)+"\n"), sha, branch:BRANCH });
     sha = r.content.sha; live = clone(data); menu = clone(data); store.del(KEY_DRAFT);

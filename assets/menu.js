@@ -2,8 +2,11 @@
    Menu items and prices live in data/menu.json, which is edited from admin.html.
    item: {name, price, aka?, desc?, type: "veg"|"meat"|"protein", twist?, chefsPick?, heat?: 1-3} */
 let MENU = [];
-const optionsHtml = c => !c.options || !c.options.list.length ? "" :
-  `<div class="cat-extra">${c.options.label?`<div class="eyebrow" style="margin-bottom:12px">${esc(c.options.label)}</div>`:""}<div class="proteins">${c.options.list.map(o=>`<div class="prot"><b>${esc(o.name)}</b><span>${esc(o.price)}</span></div>`).join("")}</div></div>`;
+const money = p => { p=String(p??"").trim(); return !p ? "" : /^[+$]/.test(p) ? p : "$"+p };
+/* category-wide add-ons (e.g. "Add a protein") show as a banner under the heading */
+const catGroupsHtml = c => (c.groups||[]).map(g=>`<div class="cat-extra"><div class="eyebrow" style="margin-bottom:12px">${esc(g.label)}</div><div class="proteins">${g.list.map(o=>`<div class="prot"><b>${esc(o.name)}</b><span>${esc(o.price?"+"+o.price:"")}</span></div>`).join("")}</div></div>`).join("");
+/* item choices (sizes, flavours, marinades) show as a short line under the description */
+const itemGroupsHtml = it => (it.groups||[]).filter(g=>g.type!=="addon").map(g=>`<span class="opts-line"><b>${esc(g.label)}:</b> ${g.list.map(o=>esc(o.name)+(o.price&&g.type==="size"?` ${esc(money(o.price))}`:"")).join(" · ")}</span>`).join("");
 
 const chips = $("#chips"), body = $("#menuBody");
 function renderChips(){
@@ -12,7 +15,7 @@ function renderChips(){
 
 function heatPill(h){
   if(!h) return "";
-  const lbl = ["","Medium","Med-hot","Very hot"][h];
+  const lbl = ["","Medium","Hot","Double hot"][h];
   return `<i class="pill hot">${chiliSvg.repeat(h)}${lbl}</i>`;
 }
 function renderMenu(){
@@ -36,18 +39,18 @@ function renderMenu(){
     return `<div class="cat" id="cat-${esc(c.id)}" data-id="${esc(c.id)}">
       <div class="cat-title"><svg class="leaf" style="color:var(--gold)" aria-hidden="true"><use href="#i-leaf"/></svg><h3>${esc(c.title)}</h3>${c.isNew?'<span class="new">New</span>':""}</div>
       ${c.note?`<p class="cat-note">${esc(c.note)}</p>`:""}
-      ${optionsHtml(c)}
+      ${catGroupsHtml(c)}
       <div class="items">${items.map(it=>{
         const kind = {meat:"n",protein:"p"}[it.type] || "v";
         const title = {n:"Contains meat or fish",p:"Choose your protein",v:"Vegetarian"}[kind];
-        const p = (it.price||"").trim();
+        const p = displayPrice(it);
         return `<div class="item">
           <div class="item-top">
-            <span class="item-name"><i class="vb ${kind}" title="${title}"></i>${hl(it.name)}${it.twist?`<i class="pill twist">${leafSvg}Twist</i>`:""}${heatPill(it.heat)}${it.chefsPick?'<i class="pill star">Chef\'s pick</i>':""}</span>
-            ${p?`<span class="dots"></span><span class="item-price">${esc(/^[+$]/.test(p)?p:"$"+p)}</span>`:""}
+            <span class="item-name"><i class="vb ${kind}" title="${title}"></i>${hl(it.name)}${it.twist?`<i class="pill twist">${leafSvg}Twist</i>`:""}${heatPill(it.heat)}${it.chefsPick?'<i class="pill star">Fav</i>':""}</span>
+            ${p?`<span class="dots"></span><span class="item-price">${esc(money(p))}</span>`:""}
           </div>
           ${it.aka?`<span class="aka">${hl(it.aka)}</span>`:""}
-          ${it.desc?`<p>${hl(it.desc)}</p>`:""}
+          ${it.desc?`<p>${hl(it.desc)}</p>`:""}${itemGroupsHtml(it)}
         </div>`}).join("")}</div></div>`;
   }).join("");
   $("#empty").style.display = shown ? "none" : "block";

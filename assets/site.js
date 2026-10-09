@@ -34,3 +34,9 @@ addEventListener("DOMContentLoaded",()=>document.querySelectorAll(".reveal").for
 
 $("#yr").textContent = new Date().getFullYear();
 
+
+/* the price shown for a dish: sizes ("18 / 34 / 68") when it has them, otherwise its own price */
+function displayPrice(it){
+  const g = (it.groups||[]).find(g=>g.type==="size" && g.list.length);
+  return g ? g.list.map(o=>String(o.price??"").trim()).filter(Boolean).join(" / ") : String(it.price??"").trim();
+}
