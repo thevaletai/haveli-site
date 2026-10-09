@@ -42,7 +42,7 @@ function describe(cat, it, sel){
 /* ================= MENU LIST ================= */
 const listEl = $("#orderMenu"), chipsEl = $("#chips");
 function renderMenu(){
-  const cats = MENU.categories.filter(c => !c.hidden && c.items.some(i => !i.hidden));
+  const cats = MENU.categories.filter(c => !c.hidden && !c.dineInOnly && c.items.some(i => !i.hidden));
   chipsEl.innerHTML = cats.map((c, i) => `<button class="chip${i ? "" : " on"}" data-id="${esc(c.id)}">${esc(c.title)}</button>`).join("");
   listEl.innerHTML = cats.map(c => `
     <div class="cat" id="cat-${esc(c.id)}" data-id="${esc(c.id)}">
@@ -87,7 +87,7 @@ function openItem(key, editIndex){
   $("#dlgGroups").innerHTML = groups.map((g, gi) => {
     const multi = g.type === "addon" && !g.single, req = g.type === "size" || (g.type === "choice" && g.required !== false);
     return `<fieldset class="dlg-group" data-g="${gi}">
-      <legend>${esc(g.label)} <small>${req ? "Required" : multi ? "Optional · pick any" : "Optional"}</small></legend>
+      <legend>${esc(g.label)} <small>${req ? "Required" : multi ? (g.max ? `Optional · up to ${g.max}` : "Optional · pick any") : "Optional"}</small></legend>
       ${g.list.map((o, ci) => {
         const checked = multi ? (cur.sel[gi] || []).includes(ci) : cur.sel[gi] === ci;
         const price = o.price ? (g.type === "size" ? fmt(num(o.price)) : "+" + fmt(num(o.price))) : "";
@@ -114,7 +114,12 @@ function updateDlg(){
   $("#dlgQty").textContent = cur.qty;
   $("#dlgAdd").textContent = `${cur.editIndex != null ? "Update" : "Add to order"} · ${fmt(unitPrice(cur.cat, cur.it, cur.sel) * cur.qty)}`;
 }
-$("#dlgGroups").addEventListener("change", updateDlg);
+$("#dlgGroups").addEventListener("change", e => {
+  // respect "up to N" limits on add-on groups
+  const fs = e.target.closest("fieldset"), g = groupsFor(cur.cat, cur.it)[+fs.dataset.g];
+  if (g && g.max && e.target.checked && fs.querySelectorAll("input:checked").length > g.max){ e.target.checked = false; fs.classList.add("need"); setTimeout(() => fs.classList.remove("need"), 900); }
+  updateDlg();
+});
 dlg.addEventListener("click", e => {
   const q = e.target.closest("[data-q]"); if (q){ cur.qty = Math.max(1, Math.min(50, cur.qty + +q.dataset.q)); updateDlg(); }
   if (e.target === dlg) dlg.close(); // click on the backdrop

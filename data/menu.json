@@ -76,7 +76,7 @@
         },
         {
           "name": "Firecracker Paneer",
-          "price": "13",
+          "price": "16",
           "desc": "Crunchy paneer in Indo-Chinese chili glaze with peppers and onion.",
           "type": "veg",
           "heat": 2
@@ -931,6 +931,118 @@
           "name": "Kheer",
           "price": "8",
           "desc": "Slow-simmered rice pudding with saffron and cardamom, served chilled.",
+          "type": "veg"
+        }
+      ]
+    },
+    {
+      "id": "kids",
+      "title": "Little Haveli",
+      "note": "For guests 10 and under. Everything here is made mild, with no chili anywhere.",
+      "groups": [
+        {
+          "label": "Finish with",
+          "type": "addon",
+          "single": true,
+          "list": [
+            {
+              "name": "Mango Kulfi Pop",
+              "price": "2"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "Tikka Nuggets & Fries",
+          "price": "10",
+          "desc": "Yogurt-marinated chicken bites, crispy coating, fries and honey-mango dip.",
+          "type": "meat",
+          "twist": true
+        },
+        {
+          "name": "Creamy Butter Chicken Rice Bowl",
+          "price": "11",
+          "desc": "Mild butter chicken over basmati rice.",
+          "type": "meat"
+        },
+        {
+          "name": "Naan Grilled Cheese",
+          "price": "9",
+          "desc": "Buttery naan with melted cheddar and mild tomato-cashew dip.",
+          "type": "veg",
+          "twist": true
+        },
+        {
+          "name": "Butter Chicken Mac & Cheese",
+          "price": "11",
+          "desc": "Creamy cheddar mac stirred with mild butter chicken sauce.",
+          "type": "meat",
+          "twist": true
+        },
+        {
+          "name": "Build-Your-Own Naan Pizza",
+          "price": "10",
+          "desc": "Naan, mild tomato sauce and mozzarella with up to three toppings. We'll draw a face on it if you ask.",
+          "type": "veg",
+          "twist": true,
+          "groups": [
+            {
+              "label": "Toppings (up to three)",
+              "type": "addon",
+              "max": 3,
+              "list": [
+                {
+                  "name": "Chicken tikka"
+                },
+                {
+                  "name": "Sweet corn"
+                },
+                {
+                  "name": "Peppers"
+                },
+                {
+                  "name": "Paneer"
+                },
+                {
+                  "name": "Pepperoni"
+                },
+                {
+                  "name": "Pineapple"
+                },
+                {
+                  "name": "Extra cheese"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bar",
+      "title": "From the Bar",
+      "dineInOnly": true,
+      "note": "Dine-in only. We also pour draught, local bottles and a short wine list. Ask your server.",
+      "items": [
+        {
+          "name": "Tamarind Margarita",
+          "price": "15",
+          "type": "veg"
+        },
+        {
+          "name": "Mango Chili Mule",
+          "price": "14",
+          "type": "veg"
+        },
+        {
+          "name": "Masala Old Fashioned",
+          "price": "16",
+          "type": "veg"
+        },
+        {
+          "name": "Rose Gin Fizz",
+          "price": "15",
           "type": "veg"
         }
       ]

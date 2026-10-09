@@ -287,7 +287,7 @@ function groupsEditor(groups, owner){
         <button class="icon x" data-a="gDel" title="Remove this choice" aria-label="Remove this choice">✕</button>
       </div>
       ${g.type==="choice"?`<label class="chk"><input type="checkbox" data-gf="required"${g.required!==false?" checked":""}> Customer must pick one</label>`:""}
-      ${g.type==="addon"?`<label class="chk"><input type="checkbox" data-gf="single"${g.single?" checked":""}> Only one add-on allowed</label>`:""}
+      ${g.type==="addon"?`<label class="chk"><input type="checkbox" data-gf="single"${g.single?" checked":""}> Only one add-on allowed</label>${g.single?"":`<label class="chk">Up to <input type="text" data-gf="max" value="${esc(g.max||"")}" placeholder="any" style="width:70px;min-height:34px" inputmode="numeric"> picks</label>`}`:""}
       <div class="opts">${g.list.map((o,oi)=>`<div class="opt" data-o="${oi}">
         <input type="text" data-of="name" value="${esc(o.name)}" placeholder="Option name" aria-label="Option name">
         ${g.type==="choice"?`<span></span>`:`<div class="pr-wrap"><input type="text" class="pr" data-of="price" value="${esc(o.price)}" placeholder="${g.type==="addon"?"+0":"—"}" aria-label="Option price"></div>`}
@@ -333,7 +333,7 @@ function catHtml(c, ci){
   const isOpen = open.has(ci) || !!q;
   return `<section class="cat${isOpen?" open":""}${c.hidden?" off":""}" data-c="${ci}">
     <div class="cat-h">
-      <button class="tg" data-a="openCat" aria-expanded="${isOpen}"><span class="car">▸</span><b>${esc(c.title||"Untitled")}</b><small>${c.items.length} item${c.items.length===1?"":"s"}${c.hidden?" · hidden":""}</small></button>
+      <button class="tg" data-a="openCat" aria-expanded="${isOpen}"><span class="car">▸</span><b>${esc(c.title||"Untitled")}</b><small>${c.items.length} item${c.items.length===1?"":"s"}${c.hidden?" · hidden":""}${c.dineInOnly?" · dine-in only":""}</small></button>
       <button class="icon" data-a="catUp" title="Move category up" aria-label="Move category up">↑</button>
       <button class="icon" data-a="catDown" title="Move category down" aria-label="Move category down">↓</button>
     </div>
@@ -345,6 +345,7 @@ function catHtml(c, ci){
           <div class="flags" style="display:flex;gap:16px;align-items:end;flex-wrap:wrap">
             <label class="chk"><input type="checkbox" data-cf="isNew"${c.isNew?" checked":""}> “New” badge</label>
             <label class="chk"><input type="checkbox" data-cf="hidden"${c.hidden?" checked":""}> Hide category</label>
+            <label class="chk"><input type="checkbox" data-cf="dineInOnly"${c.dineInOnly?" checked":""}> Dine-in only (not on the order page)</label>
           </div>
           <label class="f full">Note under the heading<textarea data-cf="note">${esc(c.note)}</textarea></label>
           <div class="full">
@@ -381,7 +382,7 @@ $("#cats").addEventListener("input", e=>{
   if (el.dataset.f && !el.closest('.groups')){ setField(itemOf(el), el.dataset.f, el); if (el.type!=="text" && el.tagName!=="TEXTAREA") render(); else changed(); return; }
   if (el.dataset.cf){
     const c=catOf(el), f=el.dataset.cf;
-    if (f==="isNew"||f==="hidden"){ if (el.checked) c[f]=true; else delete c[f]; render(); return; }
+    if (f==="isNew"||f==="hidden"||f==="dineInOnly"){ if (el.checked) c[f]=true; else delete c[f]; render(); return; }
     else if (el.value) c[f]=el.value; else delete c[f];
     if (f==="title"){ el.closest(".cat").querySelector(".tg b").textContent = el.value || "Untitled"; }
     changed(); return;
@@ -393,7 +394,8 @@ $("#cats").addEventListener("input", e=>{
       if (f==="label") g.label=el.value;
       else if (f==="type"){ g.type=el.value; delete g.required; delete g.single; if (g.type==="choice") g.list.forEach(o=>delete o.price); render(); }
       else if (f==="required"){ if (el.checked) delete g.required; else g.required=false; }
-      else if (f==="single"){ if (el.checked) g.single=true; else delete g.single; }
+      else if (f==="single"){ if (el.checked){ g.single=true; delete g.max; } else delete g.single; render(); }
+      else if (f==="max"){ const n=parseInt(el.value,10); if (n>0) g.max=n; else delete g.max; }
     } else {
       const o=g.list[+el.closest("[data-o]").dataset.o];
       o[el.dataset.of] = el.dataset.of==="price" ? el.value.replace(/^\s*[+$]*\s*/,"").trim() : el.value;
