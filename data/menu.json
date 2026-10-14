@@ -1300,13 +1300,13 @@
         {
           "name": "Greystone Brewing",
           "price": "8",
-          "desc": "16 oz · Oromocto, NB",
+          "desc": "16 oz · Fredericton, NB",
           "type": "veg"
         },
         {
           "name": "Maybee Brewing",
           "price": "8",
-          "desc": "16 oz · Saint John, NB",
+          "desc": "16 oz · Fredericton, NB",
           "type": "veg"
         }
       ]
