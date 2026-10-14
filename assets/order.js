@@ -12,7 +12,7 @@ const fmtExact = n => "$" + (Math.round(n * 100) / 100).toFixed(2);
 const prettyPhone = p => p.replace(/^\+1(\d{3})(\d{3})(\d{4})$/, "$1-$2-$3");
 
 /* every option group that applies to an item: its own + its category's (e.g. "Add a protein") */
-const groupsFor = (cat, it) => [...(it.groups || []), ...(cat.groups || [])];
+const groupsFor = (cat, it) => [...(it.groups || []), ...(it.noCatGroups ? [] : (cat.groups || []))];
 const findItem = key => { for (const c of MENU.categories) for (const it of c.items) if (c.id + "|" + it.name === key) return { cat: c, it }; return null };
 
 /* price for one unit given the chosen options */
@@ -42,18 +42,18 @@ function describe(cat, it, sel){
 /* ================= MENU LIST ================= */
 const listEl = $("#orderMenu"), chipsEl = $("#chips");
 function renderMenu(){
-  const cats = MENU.categories.filter(c => !c.hidden && !c.dineInOnly && c.items.some(i => !i.hidden));
+  const cats = MENU.categories.filter(c => !c.hidden && !c.dineInOnly && c.items.some(i => !i.hidden && !i.menuOnly));
   chipsEl.innerHTML = cats.map((c, i) => `<button class="chip${i ? "" : " on"}" data-id="${esc(c.id)}">${esc(c.title)}</button>`).join("");
   listEl.innerHTML = cats.map(c => `
     <div class="cat" id="cat-${esc(c.id)}" data-id="${esc(c.id)}">
       <div class="cat-title"><svg class="leaf" style="color:var(--gold)" aria-hidden="true"><use href="#i-leaf"/></svg><h3>${esc(c.title)}</h3></div>
       ${c.note ? `<p class="cat-note">${esc(c.note)}</p>` : ""}
-      <div class="o-items">${c.items.filter(i => !i.hidden).map(it => {
+      <div class="o-items">${c.items.filter(i => !i.hidden && !i.menuOnly).map(it => {
         const key = c.id + "|" + it.name, p = displayPrice(it);
         return `<button class="o-item" data-key="${esc(key)}">
           <span class="o-top"><b>${esc(it.name)}</b>${it.chefsPick ? '<i class="pill star">Fav</i>' : ""}${it.heat ? `<i class="pill hot">${["","Medium","Hot","Double hot"][it.heat]}</i>` : ""}</span>
           ${it.desc ? `<span class="o-desc">${esc(it.desc)}</span>` : ""}
-          <span class="o-bot"><span class="o-price">${esc(p ? (/^[+$]/.test(p) ? p : "$" + p) : "")}</span><span class="o-add" aria-hidden="true">+ Add</span></span>
+          <span class="o-bot"><span class="o-price">${esc(money(p))}</span><span class="o-add" aria-hidden="true">+ Add</span></span>
         </button>`;
       }).join("")}</div>
     </div>`).join("");

@@ -300,11 +300,11 @@ function groupsEditor(groups, owner){
 const typeLabel = {veg:"Vegetarian", meat:"Meat / fish", protein:"Choose protein"};
 function itemHtml(c, ci, it, ii){
   const k=ci+":"+ii, lv=liveItem(c,it), diff = !lv || JSON.stringify(lv)!==JSON.stringify(it);
-  const badges=[typeLabel[it.type]||"Vegetarian", it.twist&&"Canadian twist", it.chefsPick&&"Favourite", it.heat&&["","Medium","Hot","Double hot"][it.heat], it.hidden&&"Hidden"].filter(Boolean);
+  const badges=[typeLabel[it.type]||"Vegetarian", it.twist&&"Canadian twist", it.chefsPick&&"Favourite", it.heat&&["","Medium","Hot","Double hot"][it.heat], it.hidden&&"Hidden", it.menuOnly&&"Menu only", it.priceLabel&&("Shows “"+it.priceLabel+"”")].filter(Boolean);
   return `<div class="item${expanded.has(k)?" exp":""}${it.hidden?" off":""}${diff?" chg":""}" data-c="${ci}" data-i="${ii}">
     <div class="irow">
       <div><input type="text" class="nm" data-f="name" value="${esc(it.name)}" aria-label="Item name"><div class="badges">${badges.map(b=>`<span>${esc(b)}</span>`).join("")}</div></div>
-      ${(it.groups||[]).some(g=>g.type==="size")?`<div class="pr-wrap" title="Set by the size options under Edit"><input type="text" class="pr" value="${esc((it.groups.find(g=>g.type==="size").list||[]).map(o=>o.price).join(" / "))}" readonly aria-label="Price for ${esc(it.name)}, set by its size options"></div>`:`<div class="pr-wrap"><input type="text" class="pr" data-f="price" value="${esc(it.price)}" inputmode="decimal" aria-label="Price for ${esc(it.name)}" placeholder="—"></div>`}
+      ${(it.groups||[]).some(g=>g.type==="size")?`<div class="pr-wrap" title="Set by the size options under Edit"><input type="text" class="pr" value="${esc(it.priceLabel || (it.groups.find(g=>g.type==="size").list||[]).map(o=>o.price).join(" / "))}" readonly aria-label="Price for ${esc(it.name)}, set by its size options"></div>`:`<div class="pr-wrap"><input type="text" class="pr" data-f="price" value="${esc(it.price)}" inputmode="decimal" aria-label="Price for ${esc(it.name)}" placeholder="—"></div>`}
       <div class="iact">
         <button class="btn small" data-a="toggle">${expanded.has(k)?"Done":"Edit"}</button>
         <button class="icon" data-a="up" title="Move up" aria-label="Move up">↑</button>
@@ -321,6 +321,11 @@ function itemHtml(c, ci, it, ii){
         <label class="chk"><input type="checkbox" data-f="twist"${it.twist?" checked":""}> Canadian twist</label>
         <label class="chk"><input type="checkbox" data-f="chefsPick"${it.chefsPick?" checked":""}> Favourite</label>
         <label class="chk"><input type="checkbox" data-f="hidden"${it.hidden?" checked":""}> Hide from menu (sold out / seasonal)</label>
+        <label class="chk"><input type="checkbox" data-f="menuOnly"${it.menuOnly?" checked":""}> Menu only (can't be ordered online)</label>
+        <label class="chk"><input type="checkbox" data-f="noCatGroups"${it.noCatGroups?" checked":""}> Don't offer this category's add-ons</label>
+      </div>
+      <label class="f full">Price wording on the menu (optional)<input type="text" data-f="priceLabel" value="${esc(it.priceLabel)}" placeholder="e.g. from 14.99 — leave blank to show the prices"></label>
+      <div class="flags full" style="display:none">
       </div>
       <div class="full"><span class="f" style="margin-bottom:8px;display:block">Choices when ordering</span>${groupsEditor(it.groups,"item")}</div>
     </div>
@@ -346,6 +351,7 @@ function catHtml(c, ci){
             <label class="chk"><input type="checkbox" data-cf="isNew"${c.isNew?" checked":""}> “New” badge</label>
             <label class="chk"><input type="checkbox" data-cf="hidden"${c.hidden?" checked":""}> Hide category</label>
             <label class="chk"><input type="checkbox" data-cf="dineInOnly"${c.dineInOnly?" checked":""}> Dine-in only (not on the order page)</label>
+            <label class="f" style="min-width:170px">Part of the menu<select data-cf="section"><option value="">Food</option><option value="kids"${c.section==="kids"?" selected":""}>Little Haveli (kids)</option><option value="bar"${c.section==="bar"?" selected":""}>The Bar</option></select></label>
           </div>
           <label class="f full">Note under the heading<textarea data-cf="note">${esc(c.note)}</textarea></label>
           <div class="full">
@@ -383,6 +389,7 @@ $("#cats").addEventListener("input", e=>{
   if (el.dataset.cf){
     const c=catOf(el), f=el.dataset.cf;
     if (f==="isNew"||f==="hidden"||f==="dineInOnly"){ if (el.checked) c[f]=true; else delete c[f]; render(); return; }
+    if (f==="section"){ if (el.value) c.section=el.value; else delete c.section; render(); return; }
     else if (el.value) c[f]=el.value; else delete c[f];
     if (f==="title"){ el.closest(".cat").querySelector(".tg b").textContent = el.value || "Untitled"; }
     changed(); return;

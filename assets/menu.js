@@ -1,8 +1,7 @@
 /* ================= MENU DATA =================
    Menu items and prices live in data/menu.json, which is edited from admin.html.
    item: {name, price, aka?, desc?, type: "veg"|"meat"|"protein", twist?, chefsPick?, heat?: 1-3} */
-let MENU = [];
-const money = p => { p=String(p??"").trim(); return !p ? "" : /^[+$]/.test(p) ? p : "$"+p };
+let MENU = [], SECTIONS = {};
 /* category-wide add-ons (e.g. "Add a protein") show as a banner under the heading */
 const catGroupsHtml = c => (c.groups||[]).map(g=>`<div class="cat-extra"><div class="eyebrow" style="margin-bottom:12px">${esc(g.label)}</div><div class="proteins">${g.list.map(o=>`<div class="prot"><b>${esc(o.name)}</b><span>${esc(o.price?"+"+o.price:"")}</span></div>`).join("")}</div></div>`).join("");
 /* item choices (sizes, flavours, marinades) show as a short line under the description */
@@ -24,6 +23,7 @@ function renderMenu(){
   const rx = q ? new RegExp("(" + q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&") + ")","ig") : null;
   const hl = s => rx ? esc(s||"").replace(rx,"<mark>$1</mark>") : esc(s||"");
   let shown = 0;
+  let lastSection = "food";
   body.innerHTML = MENU.map(c=>{
     const items = c.items.filter(it=>{
       if (it.hidden) return false;
@@ -36,7 +36,15 @@ function renderMenu(){
     if (btn){ btn.hidden = !items.length; btn.querySelector("small").textContent = items.length; }
     if (!items.length) return "";
     shown += items.length;
-    return `<div class="cat" id="cat-${esc(c.id)}" data-id="${esc(c.id)}">
+    const sec = c.section || "food", S = SECTIONS[sec];
+    const banner = sec !== lastSection && S ? `<div class="sec-banner sec-${esc(sec)}">
+        ${S.eyebrow?`<div class="eyebrow center">${esc(S.eyebrow)}</div>`:""}
+        <h2>${sec==="kids" ? `<span class="kid-word">Little</span> Haveli` : `The <span class="gold">Bar</span>`}</h2>
+        ${(S.chips||[]).length?`<div class="sec-chips">${S.chips.map(t=>`<span>${esc(t)}</span>`).join("")}</div>`:""}
+        ${S.tagline?`<p>${esc(S.tagline)}</p>`:""}
+      </div>` : "";
+    lastSection = sec;
+    return banner + `<div class="cat cat-${esc(sec)}" id="cat-${esc(c.id)}" data-id="${esc(c.id)}">
       <div class="cat-title"><svg class="leaf" style="color:var(--gold)" aria-hidden="true"><use href="#i-leaf"/></svg><h3>${esc(c.title)}</h3>${c.isNew?'<span class="new">New</span>':""}</div>
       ${c.note?`<p class="cat-note">${esc(c.note)}</p>`:""}
       ${catGroupsHtml(c)}
@@ -79,5 +87,5 @@ function observeCats(){
 }
 /* load the published menu (bypass the CDN cache so price changes show right away) */
 (window.MENU_DATA ? Promise.resolve(window.MENU_DATA) : fetch("data/menu.json?v="+Date.now(),{cache:"no-store"}).then(r=>r.json()))
-  .then(d=>{ MENU=d.categories.filter(c=>!c.hidden); renderChips(); renderMenu(); })
+  .then(d=>{ MENU=d.categories.filter(c=>!c.hidden); SECTIONS=d.sections||{}; renderChips(); renderMenu(); })
   .catch(()=>{ body.innerHTML='<p class="empty" style="display:block">The menu didn\'t load. Please refresh, or call us at 506-455-1717.</p>'; });

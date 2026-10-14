@@ -528,3 +528,30 @@ footer .tag{font:italic 500 20px var(--serif);color:var(--muted)}
 @keyframes fabPulse{50%{transform:scale(1.04)}}
 @media (max-width:600px){.o-items{grid-template-columns:1fr}}
 .order-layout>*{min-width:0}
+
+/* ---------- menu sections: Little Haveli + The Bar ---------- */
+.sec-banner{margin:20px 0 40px;padding:clamp(34px,5vw,56px) 24px;border-radius:22px;text-align:center;position:relative;overflow:hidden;isolation:isolate}
+.sec-banner h2{font:600 clamp(36px,6vw,64px)/1.05 var(--display);margin:12px 0 14px}
+.sec-banner p{font:italic 500 clamp(18px,2vw,22px)/1.45 var(--serif);color:var(--muted);margin-top:14px}
+.sec-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.sec-chips span{padding:8px 16px;border-radius:999px;font:600 13px/1 var(--sans);color:#1a1006}
+.sec-kids{background:linear-gradient(160deg,#1f1810,#14100c);border:1px solid var(--line)}
+.sec-kids::before{content:"";position:absolute;left:0;right:0;top:0;height:14px;z-index:-1;
+  background:linear-gradient(135deg,#e9a23b 25%,transparent 25%) 0 0/28px 14px,linear-gradient(225deg,#5bbf8f 25%,transparent 25%) 14px 0/28px 14px;opacity:.9}
+.sec-kids .kid-word{color:#f2a33a}
+.sec-kids .sec-chips span:nth-child(1){background:#5bbf8f}
+.sec-kids .sec-chips span:nth-child(2){background:#5aa9e6}
+.sec-kids .sec-chips span:nth-child(3){background:#ef82b4}
+.cat-kids .items{gap:14px}
+.cat-kids .item{border:0;border-radius:16px;padding:18px 20px;background:var(--char-2);border-left:5px solid #f2a33a}
+.cat-kids .item:nth-child(6n+2){border-left-color:#5bbf8f}
+.cat-kids .item:nth-child(6n+3){border-left-color:#5aa9e6}
+.cat-kids .item:nth-child(6n+4){border-left-color:#ef82b4}
+.cat-kids .item:nth-child(6n+5){border-left-color:#e05a4a}
+.cat-kids .item:nth-child(6n+6){border-left-color:#c9a227}
+.sec-bar{background:linear-gradient(180deg,rgba(11,9,7,.55),rgba(11,9,7,.85)),url(crop-feast.webp) center/cover;border:1px solid var(--line)}
+.cat-bar .items{gap:0 48px}
+.cat-bar .item{padding:12px 0}
+.cat-bar .item p{font-size:14px}
+.cat-kids .cat-title{display:none}
+.cat-bar .vb{display:none}

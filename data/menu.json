@@ -1,6 +1,23 @@
 {
-  "updated": "2026-10-09",
+  "updated": "2026-10-13",
   "orderPhone": "+15064365787",
+  "sections": {
+    "kids": {
+      "eyebrow": "Kids Menu",
+      "title": "Little Haveli",
+      "chips": [
+        "Zero spice",
+        "Big flavour",
+        "10 & under"
+      ],
+      "tagline": "From Fredericton to Delhi, kids eat happy at Haveli!"
+    },
+    "bar": {
+      "eyebrow": "Local taps · cans · wine · mixed",
+      "title": "The Bar",
+      "tagline": "Ask about game night deals · 19+ · Please drink responsibly"
+    }
+  },
   "categories": [
     {
       "id": "starters",
@@ -75,11 +92,25 @@
           "type": "veg"
         },
         {
+          "name": "Chicken Pakora",
+          "price": "18",
+          "desc": "Chicken in spiced chickpea-flour batter, fried crispy. Mint chutney.",
+          "type": "meat",
+          "heat": 1
+        },
+        {
           "name": "Firecracker Paneer",
           "price": "16",
           "desc": "Crunchy paneer in Indo-Chinese chili glaze with peppers and onion.",
           "type": "veg",
           "heat": 2
+        },
+        {
+          "name": "Chaat Papdi",
+          "price": "10",
+          "desc": "Crisp papdi wafers topped with potato, onion, yogurt, and mint and tamarind chutneys.",
+          "type": "veg",
+          "heat": 1
         },
         {
           "name": "Naan Pull-Aparts",
@@ -137,6 +168,40 @@
           "type": "meat",
           "twist": true,
           "heat": 1
+        },
+        {
+          "name": "Afghani Soya Chaap",
+          "price": "17",
+          "desc": "Soya chaap in a creamy yogurt and cashew marinade, grilled in the tandoor.",
+          "type": "veg"
+        },
+        {
+          "name": "Papad",
+          "price": "3 / 6",
+          "desc": "Crisp lentil wafer. Masala is topped with onion, tomato, cilantro and spices.",
+          "type": "veg",
+          "groups": [
+            {
+              "label": "Style",
+              "type": "size",
+              "list": [
+                {
+                  "name": "Plain",
+                  "price": "3"
+                },
+                {
+                  "name": "Masala",
+                  "price": "6"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Fries",
+          "price": "10",
+          "desc": "Crispy golden fries.",
+          "type": "veg"
         }
       ]
     },
@@ -182,13 +247,13 @@
                   "name": "Salt & Pepper"
                 },
                 {
-                  "name": "Tandoori"
+                  "name": "Tandoori (medium)"
                 },
                 {
-                  "name": "Honey Hot"
+                  "name": "Honey Hot (medium)"
                 },
                 {
-                  "name": "Pain in the Butt"
+                  "name": "Pain in the Butt (double hot)"
                 }
               ]
             }
@@ -404,6 +469,33 @@
           ]
         },
         {
+          "name": "Paneer Tikka",
+          "price": "17 / 18",
+          "desc": "Paneer cubes marinated and roasted in the tandoor.",
+          "type": "veg",
+          "heat": 1,
+          "groups": [
+            {
+              "label": "Marinade",
+              "type": "size",
+              "list": [
+                {
+                  "name": "Tandoori",
+                  "price": "17"
+                },
+                {
+                  "name": "Achari",
+                  "price": "18"
+                },
+                {
+                  "name": "Afghani",
+                  "price": "18"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "name": "Masala Steak Frites",
           "price": "36",
           "desc": "Charred 8 oz striploin, chutney chimichurri, masala fries.",
@@ -436,6 +528,13 @@
           "desc": "Chicken tikka off the skewer, layered with mint and fried onion.",
           "type": "meat",
           "chefsPick": true,
+          "heat": 1
+        },
+        {
+          "name": "Paneer Mushroom Biryani",
+          "price": "18",
+          "desc": "Basmati rice cooked with paneer, mushrooms and aromatic spices.",
+          "type": "veg",
           "heat": 1
         },
         {
@@ -538,6 +637,20 @@
           "heat": 2
         },
         {
+          "name": "Vindaloo",
+          "price": "18",
+          "desc": "Fiery Goan-style curry with chili, garlic and a vinegar tang.",
+          "type": "veg",
+          "heat": 3
+        },
+        {
+          "name": "Handi Gravy",
+          "price": "18",
+          "desc": "Rich, home-style onion and tomato gravy, slow-cooked in the handi.",
+          "type": "veg",
+          "heat": 1
+        },
+        {
           "name": "Daal Makhani",
           "price": "20",
           "desc": "Black lentils slow-cooked overnight with butter and cream.",
@@ -559,11 +672,42 @@
           "heat": 1
         },
         {
+          "name": "Matar Mushroom",
+          "price": "19",
+          "desc": "Mushrooms and green peas in a spiced onion-tomato curry.",
+          "type": "veg",
+          "heat": 1
+        },
+        {
           "name": "Malai Kofta",
           "price": "21",
           "desc": "Deep-fried vegetable and cheese dumplings in a creamy, mildly spicy sauce.",
           "type": "veg",
           "heat": 1
+        },
+        {
+          "name": "Chicken Tikka Masala",
+          "price": "20",
+          "desc": "Grilled chicken tikka simmered in spiced tomato cream sauce.",
+          "type": "meat",
+          "heat": 1,
+          "noCatGroups": true
+        },
+        {
+          "name": "Dhaba Chicken Curry",
+          "price": "20",
+          "desc": "Traditional, spicy roadside-style chicken curry.",
+          "type": "meat",
+          "heat": 2,
+          "noCatGroups": true
+        },
+        {
+          "name": "Saag Gosht",
+          "price": "26",
+          "desc": "Goat cooked with spinach in a fragrant, aromatic gravy.",
+          "type": "meat",
+          "heat": 1,
+          "noCatGroups": true
         }
       ]
     },
@@ -703,6 +847,113 @@
       ]
     },
     {
+      "id": "indo-chinese",
+      "title": "Indo-Chinese",
+      "isNew": true,
+      "note": "Wok-tossed, desi style.",
+      "items": [
+        {
+          "name": "Hakka Noodles",
+          "price": "14.99 / 15.99 / 19.99 / 21.99",
+          "desc": "Thin noodles wok-tossed with cabbage, peppers, carrot, soy and chili.",
+          "type": "protein",
+          "heat": 1,
+          "groups": [
+            {
+              "label": "Style",
+              "type": "size",
+              "list": [
+                {
+                  "name": "Veg",
+                  "price": "14.99"
+                },
+                {
+                  "name": "Egg",
+                  "price": "15.99"
+                },
+                {
+                  "name": "Chicken",
+                  "price": "19.99"
+                },
+                {
+                  "name": "Beef",
+                  "price": "21.99"
+                }
+              ]
+            }
+          ],
+          "priceLabel": "from 14.99"
+        },
+        {
+          "name": "Fried Rice",
+          "price": "15.99 / 16.99 / 19.99 / 21.99",
+          "desc": "Basmati wok-fried with vegetables, soy and spring onion.",
+          "type": "protein",
+          "groups": [
+            {
+              "label": "Style",
+              "type": "size",
+              "list": [
+                {
+                  "name": "Veg",
+                  "price": "15.99"
+                },
+                {
+                  "name": "Egg",
+                  "price": "16.99"
+                },
+                {
+                  "name": "Chicken",
+                  "price": "19.99"
+                },
+                {
+                  "name": "Beef",
+                  "price": "21.99"
+                }
+              ]
+            }
+          ],
+          "priceLabel": "from 15.99"
+        },
+        {
+          "name": "Chilli Chicken",
+          "price": "19.99",
+          "desc": "Crispy chicken, peppers and onion in sweet-sour chili sauce.",
+          "type": "meat",
+          "heat": 2,
+          "groups": [
+            {
+              "label": "Style",
+              "type": "choice",
+              "required": true,
+              "list": [
+                {
+                  "name": "Dry"
+                },
+                {
+                  "name": "Gravy"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Chilli Paneer",
+          "price": "18",
+          "desc": "Crispy paneer, peppers and onion in sweet-sour chili sauce.",
+          "type": "veg",
+          "heat": 2
+        },
+        {
+          "name": "Honey Chilli Potato",
+          "price": "15",
+          "desc": "Crispy potato tossed in honey, chili and sesame.",
+          "type": "veg",
+          "heat": 1
+        }
+      ]
+    },
+    {
       "id": "sides",
       "title": "Breads, Rice & Sides",
       "items": [
@@ -736,6 +987,12 @@
           ]
         },
         {
+          "name": "Cheese Naan",
+          "price": "7.99",
+          "desc": "Naan stuffed with melted cheese.",
+          "type": "veg"
+        },
+        {
           "name": "Roti",
           "price": "3 / 4 / 4 / 5",
           "type": "veg",
@@ -765,8 +1022,14 @@
           ]
         },
         {
+          "name": "Missi Roti",
+          "price": "5",
+          "desc": "Spiced chickpea-flour flatbread.",
+          "type": "veg"
+        },
+        {
           "name": "Paratha",
-          "price": "5 / 6 / 6 / 6 / 7",
+          "price": "5 / 6 / 6 / 12 / 7",
           "type": "veg",
           "groups": [
             {
@@ -787,7 +1050,7 @@
                 },
                 {
                   "name": "Gobi",
-                  "price": "6"
+                  "price": "12"
                 },
                 {
                   "name": "Paneer",
@@ -865,6 +1128,12 @@
           ]
         },
         {
+          "name": "Onion Salad",
+          "price": "4",
+          "desc": "Sliced onion with lemon and green chili.",
+          "type": "veg"
+        },
+        {
           "name": "Plain Yogurt",
           "price": "4",
           "type": "veg"
@@ -907,6 +1176,7 @@
     {
       "id": "desserts",
       "title": "Desserts",
+      "note": "Allergies or dietary needs? Please let us know before ordering.",
       "items": [
         {
           "name": "Gulab Jamun Sticky Toffee",
@@ -938,65 +1208,57 @@
     {
       "id": "kids",
       "title": "Little Haveli",
-      "note": "For guests 10 and under. Everything here is made mild, with no chili anywhere.",
-      "groups": [
-        {
-          "label": "Finish with",
-          "type": "addon",
-          "single": true,
-          "list": [
-            {
-              "name": "Mango Kulfi Pop",
-              "price": "2"
-            }
-          ]
-        }
-      ],
+      "section": "kids",
+      "note": "A warm, syrupy gulab jamun comes free with every kids meal!",
       "items": [
         {
-          "name": "Tikka Nuggets & Fries",
+          "name": "Moose Bites",
           "price": "10",
-          "desc": "Yogurt-marinated chicken bites, crispy coating, fries and honey-mango dip.",
+          "aka": "Nuggets & Fries",
+          "desc": "Crispy fried chicken nuggets, fries and honey-mango dip.",
           "type": "meat",
           "twist": true
         },
         {
-          "name": "Creamy Butter Chicken Rice Bowl",
+          "name": "Bollywood Butter Bowl",
           "price": "11",
-          "desc": "Mild butter chicken over basmati rice.",
+          "aka": "Butter Chicken Rice Bowl",
+          "desc": "Mild, creamy butter chicken over fluffy basmati rice.",
           "type": "meat"
         },
         {
-          "name": "Naan Grilled Cheese",
+          "name": "Cheesy Naan-wich",
           "price": "9",
-          "desc": "Buttery naan with melted cheddar and mild tomato-cashew dip.",
+          "aka": "Naan Grilled Cheese",
+          "desc": "Buttery naan with gooey melted cheddar and a mild tomato dip.",
           "type": "veg",
           "twist": true
         },
         {
-          "name": "Butter Chicken Mac & Cheese",
+          "name": "Maharaja Mac",
           "price": "11",
+          "aka": "Butter Chicken Mac & Cheese",
           "desc": "Creamy cheddar mac stirred with mild butter chicken sauce.",
           "type": "meat",
           "twist": true
         },
         {
-          "name": "Build-Your-Own Naan Pizza",
+          "name": "Build-a-Naan Pizza",
           "price": "10",
-          "desc": "Naan, mild tomato sauce and mozzarella with up to three toppings. We'll draw a face on it if you ask.",
+          "aka": "Naan Pizza",
+          "desc": "Mild tomato sauce and mozzarella with up to three toppings.",
           "type": "veg",
           "twist": true,
           "groups": [
             {
               "label": "Toppings (up to three)",
               "type": "addon",
-              "max": 3,
               "list": [
                 {
                   "name": "Chicken tikka"
                 },
                 {
-                  "name": "Sweet corn"
+                  "name": "Corn"
                 },
                 {
                   "name": "Peppers"
@@ -1013,36 +1275,248 @@
                 {
                   "name": "Extra cheese"
                 }
-              ]
+              ],
+              "max": 3
             }
           ]
+        },
+        {
+          "name": "Sweet Treat",
+          "price": "Free",
+          "aka": "Gulab Jamun",
+          "desc": "A warm, syrupy gulab jamun comes with every kids meal!",
+          "type": "veg",
+          "menuOnly": true
         }
       ]
     },
     {
-      "id": "bar",
-      "title": "From the Bar",
+      "id": "on-tap",
+      "title": "On Tap",
+      "section": "bar",
       "dineInOnly": true,
-      "note": "Dine-in only. We also pour draught, local bottles and a short wine list. Ask your server.",
+      "note": "16 oz · local NB.",
       "items": [
         {
-          "name": "Tamarind Margarita",
-          "price": "15",
+          "name": "Greystone Brewing",
+          "price": "8",
+          "desc": "16 oz · Oromocto, NB",
           "type": "veg"
         },
         {
-          "name": "Mango Chili Mule",
-          "price": "14",
+          "name": "Maybee Brewing",
+          "price": "8",
+          "desc": "16 oz · Saint John, NB",
+          "type": "veg"
+        }
+      ]
+    },
+    {
+      "id": "cans-wine",
+      "title": "Cans & Wine",
+      "section": "bar",
+      "dineInOnly": true,
+      "items": [
+        {
+          "name": "Domestic Cans",
+          "price": "6.50",
+          "desc": "Budweiser · Molson Canadian · Keith's IPA · Moosehead · Michelob Ultra · Miller Lite · Sleeman Clear 2.0 · Pump House Radler",
           "type": "veg"
         },
         {
-          "name": "Masala Old Fashioned",
-          "price": "16",
+          "name": "Import Beer",
+          "price": "7.50",
+          "desc": "Heineken · Corona Extra · Stella Artois",
           "type": "veg"
         },
         {
-          "name": "Rose Gin Fizz",
-          "price": "15",
+          "name": "House Red or White",
+          "price": "8 / 11",
+          "desc": "Jackson-Triggs · 6 oz glass · 9 oz glass",
+          "type": "veg"
+        },
+        {
+          "name": "Modello Merlot",
+          "price": "10 / 14",
+          "desc": "Masi Modello · 6 oz glass · 9 oz glass",
+          "type": "veg"
+        },
+        {
+          "name": "Wine by the Carafe",
+          "price": "19 / 34",
+          "desc": "House wine · ½ litre · full litre",
+          "type": "veg"
+        }
+      ]
+    },
+    {
+      "id": "mixed",
+      "title": "Mixed Drinks",
+      "section": "bar",
+      "dineInOnly": true,
+      "note": "1 oz · double +4.",
+      "items": [
+        {
+          "name": "Rum & Coke",
+          "price": "7",
+          "type": "veg"
+        },
+        {
+          "name": "Vodka Soda",
+          "price": "7",
+          "type": "veg"
+        },
+        {
+          "name": "Gin & Tonic",
+          "price": "7",
+          "type": "veg"
+        },
+        {
+          "name": "Rye & Ginger",
+          "price": "7",
+          "type": "veg"
+        },
+        {
+          "name": "Vodka Cran",
+          "price": "7",
+          "type": "veg"
+        },
+        {
+          "name": "Screwdriver",
+          "price": "7",
+          "type": "veg"
+        },
+        {
+          "name": "Caesar",
+          "price": "9",
+          "desc": "Rimmed, spiced, celery",
+          "type": "veg"
+        },
+        {
+          "name": "Whiskey Sour",
+          "price": "10",
+          "desc": "Shaken with lemon",
+          "type": "veg"
+        },
+        {
+          "name": "Tom Collins",
+          "price": "9",
+          "desc": "Gin, lemon, soda",
+          "type": "veg"
+        },
+        {
+          "name": "Margarita",
+          "price": "10",
+          "desc": "Tequila, lime, salt rim",
+          "type": "veg"
+        },
+        {
+          "name": "Mojito",
+          "price": "10",
+          "desc": "Rum, mint, lime",
+          "type": "veg"
+        },
+        {
+          "name": "Long Island",
+          "price": "12",
+          "desc": "The classic",
+          "type": "veg"
+        }
+      ]
+    },
+    {
+      "id": "high-shelf",
+      "title": "High Shelf",
+      "section": "bar",
+      "dineInOnly": true,
+      "note": "1 oz · neat, rocks or mixed. Make any mixed drink high shelf +3.",
+      "items": [
+        {
+          "name": "Crown Royal",
+          "price": "8",
+          "type": "veg"
+        },
+        {
+          "name": "Jameson",
+          "price": "8",
+          "type": "veg"
+        },
+        {
+          "name": "Jack Daniel's",
+          "price": "8",
+          "type": "veg"
+        },
+        {
+          "name": "Bombay Sapphire",
+          "price": "8",
+          "type": "veg"
+        },
+        {
+          "name": "Grey Goose",
+          "price": "9",
+          "type": "veg"
+        },
+        {
+          "name": "Hennessy VS",
+          "price": "10",
+          "type": "veg"
+        },
+        {
+          "name": "Johnnie Walker Black",
+          "price": "10",
+          "type": "veg"
+        },
+        {
+          "name": "Glenfiddich",
+          "price": "10",
+          "type": "veg"
+        },
+        {
+          "name": "Chivas",
+          "price": "10",
+          "type": "veg"
+        },
+        {
+          "name": "Patrón Silver",
+          "price": "11",
+          "type": "veg"
+        }
+      ]
+    },
+    {
+      "id": "zero-proof",
+      "title": "Zero Proof",
+      "section": "bar",
+      "items": [
+        {
+          "name": "Mango Lassi",
+          "price": "8",
+          "type": "veg"
+        },
+        {
+          "name": "Masala Chai",
+          "price": "4",
+          "type": "veg"
+        },
+        {
+          "name": "Virgin Mango Mule",
+          "price": "7",
+          "type": "veg"
+        },
+        {
+          "name": "Masala Soda",
+          "price": "8",
+          "type": "veg"
+        },
+        {
+          "name": "Corona Sunbrew 0.0%",
+          "price": "6",
+          "type": "veg"
+        },
+        {
+          "name": "Soft Drinks",
+          "price": "3",
+          "desc": "Free refills when dining in",
           "type": "veg"
         }
       ]

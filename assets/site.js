@@ -37,6 +37,15 @@ $("#yr").textContent = new Date().getFullYear();
 
 /* the price shown for a dish: sizes ("18 / 34 / 68") when it has them, otherwise its own price */
 function displayPrice(it){
+  if (it.priceLabel) return String(it.priceLabel).trim();
   const g = (it.groups||[]).find(g=>g.type==="size" && g.list.length);
   return g ? g.list.map(o=>String(o.price??"").trim()).filter(Boolean).join(" / ") : String(it.price??"").trim();
+}
+
+/* "$" in front of the number: 14.99 → $14.99, "from 14.99" → "from $14.99", "Free" stays "Free" */
+function money(p){
+  p = String(p ?? "").trim();
+  if (!p || /^[+$]/.test(p)) return p;
+  if (/^\d/.test(p)) return "$" + p;
+  return p.replace(/(\d[\d.]*)/, "$$$1");
 }

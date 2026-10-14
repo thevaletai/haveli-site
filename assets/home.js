@@ -31,7 +31,6 @@ $("#marquee").innerHTML = one + one;
 /* ================= LIVE PRICES =================
    Dish cards read their prices from data/menu.json so admin edits show up here too. */
 (()=>{
-  const money = p => { p=String(p??"").trim(); return !p ? "" : /^[+$]/.test(p) ? p : "$"+p };
   const load = window.MENU_DATA ? Promise.resolve(window.MENU_DATA) : fetch("data/menu.json?v="+Date.now(),{cache:"no-store"}).then(r=>r.json());
   load.then(d=>{
     const items = {}; d.categories.forEach(c=>c.items.forEach(it=>{ items[it.name]=it }));
