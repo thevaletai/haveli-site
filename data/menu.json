@@ -701,6 +701,28 @@
               ]
             }
           ]
+        },
+        {
+          "name": "Matar Paneer / Mushroom",
+          "price": "19 / 20",
+          "desc": "Paneer or mushroom and green peas cooked in a tomato-based gravy and aromatic spices.",
+          "type": "veg",
+          "groups": [
+            {
+              "label": "Style",
+              "type": "size",
+              "list": [
+                {
+                  "name": "Matar Paneer",
+                  "price": "19"
+                },
+                {
+                  "name": "Matar Mushroom",
+                  "price": "20"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
