@@ -848,7 +848,7 @@
         },
         {
           "name": "Lamb / Goat / Beef Curry",
-          "price": "22 / 22 / 21",
+          "price": "23 / 23 / 21",
           "desc": "Lamb, goat or beef cooked in a flavourful gravy made with a blend of spices, onions and tomatoes.",
           "type": "meat",
           "groups": [
@@ -858,11 +858,11 @@
               "list": [
                 {
                   "name": "Lamb",
-                  "price": "22"
+                  "price": "23"
                 },
                 {
                   "name": "Goat",
-                  "price": "22"
+                  "price": "23"
                 },
                 {
                   "name": "Beef",
