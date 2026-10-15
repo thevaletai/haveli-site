@@ -1590,6 +1590,12 @@
           "type": "veg"
         },
         {
+          "name": "Virgin Piña Colada",
+          "price": "9",
+          "desc": "Tropical twist",
+          "type": "veg"
+        },
+        {
           "name": "Masala Soda",
           "price": "8",
           "type": "veg"
