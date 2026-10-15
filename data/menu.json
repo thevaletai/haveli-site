@@ -628,7 +628,13 @@
           "desc": "Smoky roadside-style onion-tomato gravy.",
           "type": "veg",
           "heat": 2
-        },
+        }
+      ]
+    },
+    {
+      "id": "veg-curries",
+      "title": "Veg Curries",
+      "items": [
         {
           "name": "Daal Makhani",
           "price": "20",
