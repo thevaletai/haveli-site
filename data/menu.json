@@ -62,7 +62,7 @@
         },
         {
           "name": "Chaat Papdi",
-          "price": "10",
+          "price": "12",
           "desc": "Crispy wafers topped with potatoes, yogurt, chutneys and spices.",
           "type": "veg"
         },
@@ -76,7 +76,7 @@
         },
         {
           "name": "Bombay Butter Buns",
-          "price": "13",
+          "price": "15",
           "aka": "Pav Bhaji",
           "desc": "Buttery mashed-veg curry with two toasted pav.",
           "type": "veg",
