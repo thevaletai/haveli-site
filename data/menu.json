@@ -791,7 +791,7 @@
         },
         {
           "name": "Vindaloo",
-          "price": "20 / 22 / 22 / 23",
+          "price": "21 / 22 / 22 / 23",
           "desc": "Tender chicken, beef, lamb or goat cooked in a flavourful, spicy curry.",
           "type": "meat",
           "groups": [
@@ -801,7 +801,7 @@
               "list": [
                 {
                   "name": "Chicken",
-                  "price": "20"
+                  "price": "21"
                 },
                 {
                   "name": "Beef",
