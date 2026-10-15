@@ -544,7 +544,7 @@
     },
     {
       "id": "curries",
-      "title": "Curries",
+      "title": "Curry Combo Platters",
       "note": "Feeds 2. Vegetarian as is, or add a protein. Comes with rice & naan. Milder or hotter? Just ask.",
       "groups": [
         {
@@ -594,7 +594,7 @@
         },
         {
           "name": "Tikka Masala",
-          "price": "19",
+          "price": "20",
           "desc": "Spiced tomato cream sauce, smoky from the tandoor.",
           "type": "veg",
           "heat": 1,
@@ -602,14 +602,14 @@
         },
         {
           "name": "Kadai",
-          "price": "19",
+          "price": "20",
           "desc": "Bell peppers, onion and tomato in kadai masala.",
           "type": "veg",
           "heat": 2
         },
         {
           "name": "Dhaba Curry",
-          "price": "19",
+          "price": "20",
           "desc": "Smoky roadside-style onion-tomato gravy.",
           "type": "veg",
           "heat": 2
