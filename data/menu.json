@@ -1445,67 +1445,73 @@
         {
           "name": "Rum & Coke",
           "price": "8",
-          "type": "veg"
+          "type": "veg",
+          "desc": "Rum and cola with a squeeze of lime"
         },
         {
           "name": "Vodka Soda",
           "price": "8",
-          "type": "veg"
+          "type": "veg",
+          "desc": "Vodka and soda water with lime"
         },
         {
           "name": "Gin & Tonic",
           "price": "8",
-          "type": "veg"
+          "type": "veg",
+          "desc": "Gin and tonic water with lime"
         },
         {
           "name": "Rye & Ginger",
           "price": "8",
-          "type": "veg"
+          "type": "veg",
+          "desc": "Canadian rye whisky and ginger ale"
         },
         {
           "name": "Vodka Cran",
           "price": "8",
-          "type": "veg"
+          "type": "veg",
+          "desc": "Vodka and cranberry juice with lime"
         },
         {
           "name": "Screwdriver",
           "price": "8",
-          "type": "veg"
+          "type": "veg",
+          "desc": "Vodka and orange juice"
         },
         {
           "name": "Caesar",
           "price": "9",
-          "desc": "Rimmed, spiced, celery",
+          "desc": "Vodka, Clamato, Worcestershire and hot sauce, celery-salt rim and a celery stalk",
           "type": "veg"
         },
         {
           "name": "Whiskey Sour",
           "price": "10",
-          "desc": "Shaken with lemon",
+          "desc": "Whisky, fresh lemon and simple syrup, shaken",
           "type": "veg"
         },
         {
           "name": "Tom Collins",
           "price": "9",
-          "desc": "Gin, lemon, soda",
+          "desc": "Gin, fresh lemon and simple syrup, topped with soda",
           "type": "veg"
         },
         {
           "name": "Margarita",
           "price": "10",
-          "desc": "Tequila, lime, salt rim",
+          "desc": "Tequila, triple sec and fresh lime, salt rim",
           "type": "veg"
         },
         {
           "name": "Mojito",
           "price": "10",
-          "desc": "Rum, mint, lime",
+          "desc": "White rum, fresh mint, lime and sugar, topped with soda",
           "type": "veg"
         },
         {
           "name": "Long Island",
           "price": "12",
-          "desc": "The classic",
+          "desc": "Vodka, gin, rum, tequila and triple sec with lemon and a splash of cola",
           "type": "veg"
         }
       ]
