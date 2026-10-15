@@ -1596,6 +1596,12 @@
           "type": "veg"
         },
         {
+          "name": "Virgin Mojito",
+          "price": "9",
+          "desc": "Mint, lime, soda",
+          "type": "veg"
+        },
+        {
           "name": "Masala Soda",
           "price": "8",
           "type": "veg"
