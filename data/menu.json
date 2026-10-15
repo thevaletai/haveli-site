@@ -675,6 +675,32 @@
           "price": "18",
           "desc": "Slow-cooked mustard greens and spinach finished with butter. A Punjabi winter classic.",
           "type": "veg"
+        },
+        {
+          "name": "Shahi / Kadhai Paneer / Paneer Tikka Masala",
+          "price": "20 / 20 / 21",
+          "desc": "Shahi: paneer cubes cooked in a mildly spiced butter sauce. Kadhai: with bell peppers and onions. Tikka masala: grilled paneer cooked in a tomato-based gravy.",
+          "type": "veg",
+          "groups": [
+            {
+              "label": "Style",
+              "type": "size",
+              "list": [
+                {
+                  "name": "Shahi Paneer",
+                  "price": "20"
+                },
+                {
+                  "name": "Kadhai Paneer",
+                  "price": "20"
+                },
+                {
+                  "name": "Paneer Tikka Masala",
+                  "price": "21"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
