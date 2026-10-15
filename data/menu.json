@@ -1249,7 +1249,7 @@
         },
         {
           "name": "Mango Lassi",
-          "price": "9",
+          "price": "8",
           "type": "veg"
         },
         {
@@ -1576,7 +1576,7 @@
       "items": [
         {
           "name": "Mango Lassi",
-          "price": "9",
+          "price": "8",
           "type": "veg"
         },
         {
@@ -1591,7 +1591,7 @@
         },
         {
           "name": "Masala Soda",
-          "price": "9",
+          "price": "8",
           "type": "veg"
         },
         {
@@ -1601,8 +1601,13 @@
         },
         {
           "name": "Soft Drinks",
-          "price": "4",
+          "price": "3",
           "desc": "Free refills when dining in",
+          "type": "veg"
+        },
+        {
+          "name": "Bottled Water",
+          "price": "1",
           "type": "veg"
         }
       ]
