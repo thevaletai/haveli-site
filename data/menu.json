@@ -581,21 +581,6 @@
       ],
       "items": [
         {
-          "name": "House Butter Sauce",
-          "price": "18",
-          "aka": "Butter Chicken",
-          "desc": "The Haveli classic. Rich tomato, butter, cream and fenugreek sauce.",
-          "type": "veg",
-          "chefsPick": true
-        },
-        {
-          "name": "Korma",
-          "price": "18",
-          "desc": "Creamy coconut gravy with warm spices. Gently sweet.",
-          "type": "veg",
-          "chefsPick": true
-        },
-        {
           "name": "Nizami Handi",
           "price": "19",
           "desc": "Creamy and sweet Hyderabadi white curry with cream, coconut and cardamom.",
