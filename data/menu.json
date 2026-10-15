@@ -1509,6 +1509,12 @@
           "type": "veg"
         },
         {
+          "name": "Piña Colada",
+          "price": "10",
+          "desc": "White rum, pineapple juice and cream of coconut, blended",
+          "type": "veg"
+        },
+        {
           "name": "Long Island",
           "price": "12",
           "desc": "Vodka, gin, rum, tequila and triple sec with lemon and a splash of cola",
@@ -1598,7 +1604,7 @@
         {
           "name": "Virgin Piña Colada",
           "price": "9",
-          "desc": "Tropical twist",
+          "desc": "Tropical twist: pineapple juice and cream of coconut, blended",
           "type": "veg"
         },
         {
