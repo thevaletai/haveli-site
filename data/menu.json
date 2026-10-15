@@ -84,7 +84,7 @@
         },
         {
           "name": "The Mumbai Slider",
-          "price": "12",
+          "price": "14",
           "aka": "Vada Pav",
           "desc": "Mumbai's burger: two spiced potato fritters in soft pav.",
           "type": "veg",
@@ -284,7 +284,7 @@
         },
         {
           "name": "The Naan Wrap",
-          "price": "16 / 17 / 18",
+          "price": "17 / 16 / 18",
           "desc": "Onion and green chutney, wrapped in warm naan.",
           "type": "protein",
           "heat": 1,
@@ -295,11 +295,11 @@
               "list": [
                 {
                   "name": "Chicken tikka",
-                  "price": "16"
+                  "price": "17"
                 },
                 {
                   "name": "Paneer tikka",
-                  "price": "17"
+                  "price": "16"
                 },
                 {
                   "name": "Spiced beef",
@@ -395,7 +395,7 @@
       "items": [
         {
           "name": "Chicken Tikka · Boneless",
-          "price": "17 / 18 / 19 / 19",
+          "price": "18 / 19 / 20 / 19",
           "desc": "Boneless chicken in spiced yogurt, tangy pickle marinade, creamy marination or a Lahori-style spice blend, then grilled smoky and tender in the tandoor.",
           "type": "meat",
           "groups": [
@@ -405,15 +405,15 @@
               "list": [
                 {
                   "name": "Tandoori",
-                  "price": "17"
-                },
-                {
-                  "name": "Achari",
                   "price": "18"
                 },
                 {
-                  "name": "Malai",
+                  "name": "Achari",
                   "price": "19"
+                },
+                {
+                  "name": "Malai",
+                  "price": "20"
                 },
                 {
                   "name": "Lahori",
@@ -427,7 +427,7 @@
         },
         {
           "name": "Paneer Tikka",
-          "price": "16 / 17 / 18",
+          "price": "18 / 19 / 20",
           "desc": "Paneer cubes in yogurt and spices, tangy pickling spices or a creamy, mild blend, then roasted to perfection in the tandoor.",
           "type": "veg",
           "groups": [
@@ -437,15 +437,15 @@
               "list": [
                 {
                   "name": "Tandoori",
-                  "price": "16"
+                  "price": "18"
                 },
                 {
                   "name": "Achari",
-                  "price": "17"
+                  "price": "19"
                 },
                 {
                   "name": "Afghani",
-                  "price": "18"
+                  "price": "20"
                 }
               ]
             }
@@ -477,7 +477,7 @@
         },
         {
           "name": "Afghani Chicken · Bone-In",
-          "price": "21 / 37",
+          "price": "22 / 40",
           "desc": "Yogurt, cream and aromatic spices, cooked in a clay tandoor.",
           "type": "meat",
           "groups": [
@@ -487,11 +487,11 @@
               "list": [
                 {
                   "name": "Half",
-                  "price": "21"
+                  "price": "22"
                 },
                 {
                   "name": "Full",
-                  "price": "37"
+                  "price": "40"
                 }
               ]
             }
@@ -512,31 +512,31 @@
       "items": [
         {
           "name": "Subz Biryani",
-          "price": "19",
+          "price": "20",
           "desc": "Seasonal vegetables layered with mint and saffron rice.",
           "type": "veg"
         },
         {
           "name": "Paneer Tikka Biryani",
-          "price": "19",
+          "price": "21",
           "desc": "Tandoor-charred paneer folded through creamy, fragrant rice.",
           "type": "veg"
         },
         {
           "name": "Chicken Tikka Biryani",
-          "price": "22",
+          "price": "24",
           "desc": "Chicken tikka off the skewer, layered with mint and fried onion.",
           "type": "meat"
         },
         {
           "name": "Beef Biryani",
-          "price": "23",
+          "price": "25",
           "desc": "Beef slow-braised in spiced masala until tender, then layered with rice.",
           "type": "meat"
         },
         {
           "name": "Lamb Boti Biryani",
-          "price": "25",
+          "price": "26",
           "desc": "Yogurt-marinated lamb pieces cooked down with whole spices, sealed with rice.",
           "type": "meat"
         }
@@ -545,7 +545,7 @@
     {
       "id": "curries",
       "title": "Curry Combo Platters",
-      "note": "Feeds 2. Vegetarian as is, or add a protein. Comes with rice & naan. Milder or hotter? Just ask.",
+      "note": "Feeds 2. Vegetarian as is, or add a protein. Comes with your choice of rice or naan. Milder or hotter? Just ask.",
       "groups": [
         {
           "label": "Add a protein",
@@ -577,6 +577,19 @@
             }
           ],
           "single": true
+        },
+        {
+          "label": "Comes with",
+          "type": "choice",
+          "required": true,
+          "list": [
+            {
+              "name": "Rice"
+            },
+            {
+              "name": "Naan"
+            }
+          ]
         }
       ],
       "items": [
@@ -622,7 +635,7 @@
       "items": [
         {
           "name": "Daal Makhani",
-          "price": "19",
+          "price": "20",
           "desc": "Black lentils slow-cooked overnight with butter and cream.",
           "type": "veg",
           "chefsPick": true
@@ -650,7 +663,7 @@
         },
         {
           "name": "Paneer Bhurji",
-          "price": "21",
+          "price": "23",
           "desc": "Scrambled paneer cooked with onion, tomato, green chili and butter.",
           "type": "veg",
           "heat": 1
@@ -663,7 +676,7 @@
         },
         {
           "name": "Shahi / Kadhai Paneer / Paneer Tikka Masala",
-          "price": "20 / 20 / 21",
+          "price": "21 / 20 / 22",
           "desc": "Shahi: paneer cubes cooked in a mildly spiced butter sauce. Kadhai: with bell peppers and onions. Tikka masala: grilled paneer cooked in a tomato-based gravy.",
           "type": "veg",
           "groups": [
@@ -673,7 +686,7 @@
               "list": [
                 {
                   "name": "Shahi Paneer",
-                  "price": "20"
+                  "price": "21"
                 },
                 {
                   "name": "Kadhai Paneer",
@@ -681,7 +694,7 @@
                 },
                 {
                   "name": "Paneer Tikka Masala",
-                  "price": "21"
+                  "price": "22"
                 }
               ]
             }
@@ -689,7 +702,7 @@
         },
         {
           "name": "Matar Paneer / Mushroom",
-          "price": "19 / 20",
+          "price": "20 / 19",
           "desc": "Paneer or mushroom and green peas cooked in a tomato-based gravy and aromatic spices.",
           "type": "veg",
           "groups": [
@@ -699,15 +712,22 @@
               "list": [
                 {
                   "name": "Matar Paneer",
-                  "price": "19"
+                  "price": "20"
                 },
                 {
                   "name": "Matar Mushroom",
-                  "price": "20"
+                  "price": "19"
                 }
               ]
             }
           ]
+        },
+        {
+          "name": "Baingan Bharta",
+          "price": "19",
+          "desc": "Fire-roasted eggplant mashed with onion, tomato and spices.",
+          "type": "veg",
+          "heat": 1
         }
       ]
     },
@@ -872,6 +892,23 @@
             }
           ]
         }
+      ],
+      "note": "Rice and naan not included. Add rice +2.50 · naan +2.50.",
+      "groups": [
+        {
+          "label": "Add a side",
+          "type": "addon",
+          "list": [
+            {
+              "name": "Rice",
+              "price": "2.50"
+            },
+            {
+              "name": "Naan",
+              "price": "2.50"
+            }
+          ]
+        }
       ]
     },
     {
@@ -880,7 +917,7 @@
       "items": [
         {
           "name": "Veg Thaali",
-          "price": "23",
+          "price": "21",
           "desc": "Daal and two veg curries with rice, naan, raita and a sweet.",
           "type": "veg",
           "heat": 1,
@@ -894,7 +931,7 @@
         },
         {
           "name": "Non-Veg Thaali",
-          "price": "24",
+          "price": "26",
           "desc": "Butter chicken, lamb curry and chickpeas with rice, naan, raita and a sweet.",
           "type": "meat",
           "heat": 1,
@@ -902,7 +939,7 @@
         },
         {
           "name": "Non-Veg Combo",
-          "price": "16",
+          "price": "17",
           "desc": "Butter chicken with rice and naan.",
           "type": "meat"
         }
@@ -963,13 +1000,6 @@
             }
           ],
           "chefsPick": true
-        },
-        {
-          "name": "Baingan Bharta",
-          "price": "19",
-          "desc": "Fire-roasted eggplant mashed with onion, tomato and spices.",
-          "type": "veg",
-          "heat": 1
         }
       ]
     },
@@ -981,7 +1011,7 @@
       "items": [
         {
           "name": "Hakka Noodles",
-          "price": "13 / 14 / 18",
+          "price": "15 / 17 / 19",
           "desc": "Thin noodles wok-tossed with cabbage, peppers, carrot, soy and chili.",
           "type": "protein",
           "heat": 1,
@@ -992,15 +1022,15 @@
               "list": [
                 {
                   "name": "Veg",
-                  "price": "13"
+                  "price": "15"
                 },
                 {
                   "name": "Egg",
-                  "price": "14"
+                  "price": "17"
                 },
                 {
                   "name": "Chicken",
-                  "price": "18"
+                  "price": "19"
                 }
               ]
             }
@@ -1008,7 +1038,7 @@
         },
         {
           "name": "Fried Rice",
-          "price": "14 / 15 / 18",
+          "price": "15 / 17 / 19",
           "desc": "Basmati fried in the wok with vegetables, soy and spring onion.",
           "type": "protein",
           "groups": [
@@ -1018,15 +1048,15 @@
               "list": [
                 {
                   "name": "Veg",
-                  "price": "14"
-                },
-                {
-                  "name": "Egg",
                   "price": "15"
                 },
                 {
+                  "name": "Egg",
+                  "price": "17"
+                },
+                {
                   "name": "Chicken",
-                  "price": "18"
+                  "price": "19"
                 }
               ]
             }
