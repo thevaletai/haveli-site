@@ -877,55 +877,34 @@
     {
       "id": "thaali",
       "title": "Thaali / Combo",
-      "note": "Thaali: rice, naan, raita and a sweet. Combo: the same curries with rice and naan.",
       "items": [
         {
-          "name": "Veg Thaali / Combo",
-          "price": "23 / 15",
-          "desc": "Thaali: daal and two veg curries. Combo: paneer butter masala.",
+          "name": "Veg Thaali",
+          "price": "23",
+          "desc": "Daal and two veg curries with rice, naan, raita and a sweet.",
           "type": "veg",
-          "groups": [
-            {
-              "label": "Choose",
-              "type": "size",
-              "list": [
-                {
-                  "name": "Thaali",
-                  "price": "23"
-                },
-                {
-                  "name": "Combo",
-                  "price": "15"
-                }
-              ]
-            }
-          ],
           "heat": 1,
           "chefsPick": true
         },
         {
-          "name": "Non-Veg Thaali / Combo",
-          "price": "24 / 16",
-          "desc": "Thaali: butter chicken, lamb curry, chickpeas. Combo: butter chicken.",
+          "name": "Veg Combo",
+          "price": "15",
+          "desc": "Paneer butter masala with rice and naan.",
+          "type": "veg"
+        },
+        {
+          "name": "Non-Veg Thaali",
+          "price": "24",
+          "desc": "Butter chicken, lamb curry and chickpeas with rice, naan, raita and a sweet.",
           "type": "meat",
-          "groups": [
-            {
-              "label": "Choose",
-              "type": "size",
-              "list": [
-                {
-                  "name": "Thaali",
-                  "price": "24"
-                },
-                {
-                  "name": "Combo",
-                  "price": "16"
-                }
-              ]
-            }
-          ],
           "heat": 1,
           "chefsPick": true
+        },
+        {
+          "name": "Non-Veg Combo",
+          "price": "16",
+          "desc": "Butter chicken with rice and naan.",
+          "type": "meat"
         }
       ]
     },
