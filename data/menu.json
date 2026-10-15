@@ -662,6 +662,19 @@
           "desc": "Deep-fried vegetable and cheese dumplings in a creamy, mildly spicy sauce.",
           "type": "veg",
           "heat": 1
+        },
+        {
+          "name": "Paneer Bhurji",
+          "price": "21",
+          "desc": "Scrambled paneer cooked with onion, tomato, green chili and butter.",
+          "type": "veg",
+          "heat": 1
+        },
+        {
+          "name": "Sarson Da Saag",
+          "price": "18",
+          "desc": "Slow-cooked mustard greens and spinach finished with butter. A Punjabi winter classic.",
+          "type": "veg"
         }
       ]
     },
@@ -777,24 +790,11 @@
           "chefsPick": true
         },
         {
-          "name": "Paneer Bhurji",
-          "price": "21",
-          "desc": "Scrambled paneer cooked with onion, tomato, green chili and butter.",
-          "type": "veg",
-          "heat": 1
-        },
-        {
           "name": "Baingan Bharta",
           "price": "19",
           "desc": "Fire-roasted eggplant mashed with onion, tomato and spices.",
           "type": "veg",
           "heat": 1
-        },
-        {
-          "name": "Sarson Da Saag",
-          "price": "18",
-          "desc": "Slow-cooked mustard greens and spinach finished with butter. A Punjabi winter classic.",
-          "type": "veg"
         }
       ]
     },
