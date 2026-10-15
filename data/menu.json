@@ -1303,22 +1303,15 @@
       "note": "Allergies or dietary needs? Please let us know before ordering.",
       "items": [
         {
-          "name": "Gulab Jamun Sticky Toffee",
-          "price": "9",
-          "desc": "Warm gulab jamun under jaggery toffee sauce with vanilla ice cream.",
-          "type": "veg",
-          "twist": true
+          "name": "Gulab Jamun",
+          "price": "5",
+          "desc": "Two warm, syrupy gulab jamun.",
+          "type": "veg"
         },
         {
           "name": "Gulab Jamun Sundae",
           "price": "9",
           "desc": "Two warm gulab jamun, two scoops of vanilla ice cream, rose syrup.",
-          "type": "veg"
-        },
-        {
-          "name": "Mango Sundae",
-          "price": "9",
-          "desc": "House mango kulfi, whipped cream and rose syrup.",
           "type": "veg"
         },
         {
