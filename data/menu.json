@@ -25,7 +25,7 @@
       "items": [
         {
           "name": "The Samosa Pair",
-          "price": "12 / 13",
+          "price": "8 / 9",
           "desc": "Triangular pastry filled with a mixture of spiced potatoes, peas and aromatic spices.",
           "type": "veg",
           "groups": [
@@ -35,11 +35,11 @@
               "list": [
                 {
                   "name": "Vegetable",
-                  "price": "12"
+                  "price": "8"
                 },
                 {
                   "name": "Chicken",
-                  "price": "13"
+                  "price": "9"
                 }
               ]
             }
@@ -48,27 +48,27 @@
         },
         {
           "name": "Samosa Chana Chaat",
-          "price": "16",
+          "price": "11",
           "desc": "Crispy samosas mixed with chickpea curry, topped with yogurt, tamarind mint chutney and sev.",
           "type": "veg",
           "heat": 1
         },
         {
           "name": "Yogurt Bombs",
-          "price": "11",
+          "price": "8",
           "aka": "Dahi Puri",
           "desc": "Crispy puris filled with potatoes and chickpeas, topped with yogurt, chutneys, sev and chaat spices.",
           "type": "veg"
         },
         {
           "name": "Chaat Papdi",
-          "price": "13",
+          "price": "9",
           "desc": "Crispy wafers topped with potatoes, yogurt, chutneys and spices.",
           "type": "veg"
         },
         {
           "name": "Crushed Potato Crunch",
-          "price": "12",
+          "price": "8",
           "aka": "Aloo Tikki Chaat",
           "desc": "Crispy potato patties topped with yogurt, chutneys, onions and sev.",
           "type": "veg",
@@ -76,7 +76,7 @@
         },
         {
           "name": "Bombay Butter Buns",
-          "price": "17",
+          "price": "12",
           "aka": "Pav Bhaji",
           "desc": "Buttery mashed-veg curry with two toasted pav.",
           "type": "veg",
@@ -84,7 +84,7 @@
         },
         {
           "name": "The Mumbai Slider",
-          "price": "15",
+          "price": "11",
           "aka": "Vada Pav",
           "desc": "Mumbai's burger: two spiced potato fritters in soft pav.",
           "type": "veg",
@@ -92,27 +92,27 @@
         },
         {
           "name": "Crackle Fritters",
-          "price": "15",
+          "price": "11",
           "aka": "Pakora",
           "desc": "Vegetables coated in a spiced gram flour batter and deep-fried until crispy.",
           "type": "veg"
         },
         {
           "name": "Chicken Pakora",
-          "price": "24",
+          "price": "17",
           "desc": "Chicken marinated in spiced chickpea-flour batter, fried crispy.",
           "type": "meat"
         },
         {
           "name": "Firecracker Paneer",
-          "price": "21",
+          "price": "15",
           "desc": "Crunchy paneer in Indo-Chinese chili glaze with peppers and onion.",
           "type": "veg",
           "heat": 2
         },
         {
           "name": "Naan Pull-Aparts",
-          "price": "17",
+          "price": "12",
           "desc": "Sweet naan stuffed with coconut and mozzarella. Choice of dip.",
           "type": "veg",
           "twist": true,
@@ -137,8 +137,8 @@
         },
         {
           "name": "Indian Street Nachos",
-          "price": "21",
-          "desc": "Tortilla chips topped with mozzarella, veggies and our house masala. Add chicken or beef +8.",
+          "price": "15",
+          "desc": "Tortilla chips topped with mozzarella, veggies and our house masala. Add chicken or beef +6.",
           "type": "veg",
           "twist": true,
           "groups": [
@@ -148,11 +148,11 @@
               "list": [
                 {
                   "name": "Chicken",
-                  "price": "8"
+                  "price": "6"
                 },
                 {
                   "name": "Beef",
-                  "price": "8"
+                  "price": "6"
                 }
               ],
               "single": true
@@ -161,7 +161,7 @@
         },
         {
           "name": "Maritime Masala Fish Bites",
-          "price": "24",
+          "price": "17",
           "desc": "Fish in aromatic spices and crispy batter, fried golden brown.",
           "type": "meat",
           "twist": true,
@@ -176,7 +176,7 @@
       "items": [
         {
           "name": "Wings",
-          "price": "24 / 45 / 89",
+          "price": "17 / 31 / 62",
           "desc": "Marinated, very thinly breaded and fried super crispy, then hand-tossed in Chef Vic's signature blend. Juicy, with some of the most meat on the bone in Fredericton. Tandoori wings are crisped in the tandoor.",
           "type": "meat",
           "twist": true,
@@ -187,15 +187,15 @@
               "list": [
                 {
                   "name": "1 lb",
-                  "price": "24"
+                  "price": "17"
                 },
                 {
                   "name": "2 lb",
-                  "price": "45"
+                  "price": "31"
                 },
                 {
                   "name": "4 lb",
-                  "price": "89"
+                  "price": "62"
                 }
               ]
             },
@@ -229,11 +229,11 @@
       "id": "street",
       "title": "Naan Street Food",
       "isNew": true,
-      "note": "All handhelds come with masala fries. Chaat fries +4 · butter chicken poutine +7.",
+      "note": "All handhelds come with masala fries. Chaat fries +3 · butter chicken poutine +5.",
       "items": [
         {
           "name": "The Makhani Crunch",
-          "price": "23",
+          "price": "16",
           "aka": "Butter Chicken Crispy Sandwich",
           "desc": "Fried chicken dunked in butter chicken masala, house slaw, pickled onion, fresh brioche.",
           "type": "meat",
@@ -246,11 +246,11 @@
               "list": [
                 {
                   "name": "Chaat fries",
-                  "price": "4"
+                  "price": "3"
                 },
                 {
                   "name": "Butter chicken poutine",
-                  "price": "7"
+                  "price": "5"
                 }
               ],
               "single": true
@@ -259,7 +259,7 @@
         },
         {
           "name": "The Garam Gourmet Burger",
-          "price": "25",
+          "price": "18",
           "aka": "Gourmet Masala Burger",
           "desc": "8 oz thick, juicy patty in house masala, cooked so the juices explode in your mouth. Cheddar, masala onions, brioche.",
           "type": "meat",
@@ -271,11 +271,11 @@
               "list": [
                 {
                   "name": "Chaat fries",
-                  "price": "4"
+                  "price": "3"
                 },
                 {
                   "name": "Butter chicken poutine",
-                  "price": "7"
+                  "price": "5"
                 }
               ],
               "single": true
@@ -284,7 +284,7 @@
         },
         {
           "name": "The Naan Wrap",
-          "price": "21 / 23 / 24",
+          "price": "15 / 16 / 17",
           "desc": "Onion and green chutney, wrapped in warm naan.",
           "type": "protein",
           "heat": 1,
@@ -295,15 +295,15 @@
               "list": [
                 {
                   "name": "Chicken tikka",
-                  "price": "21"
+                  "price": "15"
                 },
                 {
                   "name": "Paneer tikka",
-                  "price": "23"
+                  "price": "16"
                 },
                 {
                   "name": "Spiced beef",
-                  "price": "24"
+                  "price": "17"
                 }
               ]
             },
@@ -313,11 +313,11 @@
               "list": [
                 {
                   "name": "Chaat fries",
-                  "price": "4"
+                  "price": "3"
                 },
                 {
                   "name": "Butter chicken poutine",
-                  "price": "7"
+                  "price": "5"
                 }
               ],
               "single": true
@@ -326,7 +326,7 @@
         },
         {
           "name": "Butter Chicken Naan Wrap",
-          "price": "23",
+          "price": "16",
           "desc": "Butter chicken, house slaw and pickled onion, wrapped in warm naan.",
           "type": "meat",
           "groups": [
@@ -336,11 +336,11 @@
               "list": [
                 {
                   "name": "Chaat fries",
-                  "price": "4"
+                  "price": "3"
                 },
                 {
                   "name": "Butter chicken poutine",
-                  "price": "7"
+                  "price": "5"
                 }
               ],
               "single": true
@@ -349,7 +349,7 @@
         },
         {
           "name": "Butter Chicken Poutine",
-          "price": "24",
+          "price": "17",
           "desc": "Fries, cheese curds, butter chicken gravy, cilantro, pickled onion.",
           "type": "meat",
           "twist": true,
@@ -357,7 +357,7 @@
         },
         {
           "name": "Masala Steak Frites",
-          "price": "50",
+          "price": "35",
           "desc": "Charred 8 oz striploin, chimichurri, fries.",
           "type": "meat",
           "twist": true,
@@ -395,7 +395,7 @@
       "items": [
         {
           "name": "Chicken Tikka · Boneless",
-          "price": "23 / 24 / 26 / 25",
+          "price": "16 / 17 / 18 / 18",
           "desc": "Boneless chicken in spiced yogurt, tangy pickle marinade, creamy marination or a Lahori-style spice blend, then grilled smoky and tender in the tandoor.",
           "type": "meat",
           "groups": [
@@ -405,19 +405,19 @@
               "list": [
                 {
                   "name": "Tandoori",
-                  "price": "23"
+                  "price": "16"
                 },
                 {
                   "name": "Achari",
-                  "price": "24"
+                  "price": "17"
                 },
                 {
                   "name": "Malai",
-                  "price": "26"
+                  "price": "18"
                 },
                 {
                   "name": "Lahori",
-                  "price": "25"
+                  "price": "18"
                 }
               ]
             }
@@ -427,7 +427,7 @@
         },
         {
           "name": "Paneer Tikka",
-          "price": "21 / 23 / 24",
+          "price": "15 / 16 / 17",
           "desc": "Paneer cubes in yogurt and spices, tangy pickling spices or a creamy, mild blend, then roasted to perfection in the tandoor.",
           "type": "veg",
           "groups": [
@@ -437,15 +437,15 @@
               "list": [
                 {
                   "name": "Tandoori",
-                  "price": "21"
+                  "price": "15"
                 },
                 {
                   "name": "Achari",
-                  "price": "23"
+                  "price": "16"
                 },
                 {
                   "name": "Afghani",
-                  "price": "24"
+                  "price": "17"
                 }
               ]
             }
@@ -454,7 +454,7 @@
         },
         {
           "name": "Tandoori Chicken · Bone-In",
-          "price": "25 / 47",
+          "price": "18 / 33",
           "desc": "Yogurt and spices, cooked in the clay tandoor until juicy and tender.",
           "type": "meat",
           "groups": [
@@ -464,11 +464,11 @@
               "list": [
                 {
                   "name": "Half",
-                  "price": "25"
+                  "price": "18"
                 },
                 {
                   "name": "Full",
-                  "price": "47"
+                  "price": "33"
                 }
               ]
             }
@@ -477,7 +477,7 @@
         },
         {
           "name": "Afghani Chicken · Bone-In",
-          "price": "28 / 52",
+          "price": "20 / 36",
           "desc": "Yogurt, cream and aromatic spices, cooked in a clay tandoor.",
           "type": "meat",
           "groups": [
@@ -487,11 +487,11 @@
               "list": [
                 {
                   "name": "Half",
-                  "price": "28"
+                  "price": "20"
                 },
                 {
                   "name": "Full",
-                  "price": "52"
+                  "price": "36"
                 }
               ]
             }
@@ -499,7 +499,7 @@
         },
         {
           "name": "Afghani Soya Chaap",
-          "price": "24",
+          "price": "17",
           "desc": "Soy-based vegetarian protein skewers marinated in creamy gravy and grilled.",
           "type": "veg"
         }
@@ -512,31 +512,31 @@
       "items": [
         {
           "name": "Subz Biryani",
-          "price": "25",
+          "price": "18",
           "desc": "Seasonal vegetables layered with mint and saffron rice.",
           "type": "veg"
         },
         {
           "name": "Paneer Tikka Biryani",
-          "price": "26",
+          "price": "18",
           "desc": "Tandoor-charred paneer folded through creamy, fragrant rice.",
           "type": "veg"
         },
         {
           "name": "Chicken Tikka Biryani",
-          "price": "30",
+          "price": "21",
           "desc": "Chicken tikka off the skewer, layered with mint and fried onion.",
           "type": "meat"
         },
         {
           "name": "Beef Biryani",
-          "price": "32",
+          "price": "22",
           "desc": "Beef slow-braised in spiced masala until tender, then layered with rice.",
           "type": "meat"
         },
         {
           "name": "Lamb Boti Biryani",
-          "price": "34",
+          "price": "24",
           "desc": "Yogurt-marinated lamb pieces cooked down with whole spices, sealed with rice.",
           "type": "meat"
         }
@@ -553,27 +553,27 @@
           "list": [
             {
               "name": "Tofu",
-              "price": "4"
+              "price": "3"
             },
             {
               "name": "Paneer",
-              "price": "7"
+              "price": "5"
             },
             {
               "name": "Chicken",
-              "price": "7"
+              "price": "5"
             },
             {
               "name": "Beef",
-              "price": "8"
+              "price": "6"
             },
             {
               "name": "Lamb",
-              "price": "10"
+              "price": "7"
             },
             {
               "name": "Goat",
-              "price": "11"
+              "price": "8"
             }
           ],
           "single": true
@@ -582,19 +582,19 @@
       "items": [
         {
           "name": "Nizami Handi",
-          "price": "27",
+          "price": "19",
           "desc": "Creamy and sweet Hyderabadi white curry with cream, coconut and cardamom.",
           "type": "veg"
         },
         {
           "name": "Mango Curry",
-          "price": "27",
+          "price": "19",
           "desc": "Ripe mango and cream with warm spices. Sweet, silky and mild.",
           "type": "veg"
         },
         {
           "name": "Tikka Masala",
-          "price": "26",
+          "price": "18",
           "desc": "Spiced tomato cream sauce, smoky from the tandoor.",
           "type": "veg",
           "heat": 1,
@@ -602,14 +602,14 @@
         },
         {
           "name": "Kadai",
-          "price": "26",
+          "price": "18",
           "desc": "Bell peppers, onion and tomato in kadai masala.",
           "type": "veg",
           "heat": 2
         },
         {
           "name": "Dhaba Curry",
-          "price": "26",
+          "price": "18",
           "desc": "Smoky roadside-style onion-tomato gravy.",
           "type": "veg",
           "heat": 2
@@ -622,48 +622,48 @@
       "items": [
         {
           "name": "Daal Makhani",
-          "price": "26",
+          "price": "18",
           "desc": "Black lentils slow-cooked overnight with butter and cream.",
           "type": "veg",
           "chefsPick": true
         },
         {
           "name": "Homestyle Daal Tadka",
-          "price": "24",
+          "price": "17",
           "desc": "Yellow lentils finished with a sizzle of ghee, garlic and aromatic spices.",
           "type": "veg",
           "heat": 1
         },
         {
           "name": "Masala Aloo Gobi",
-          "price": "25",
+          "price": "18",
           "desc": "Potato and cauliflower cooked in our house curry.",
           "type": "veg",
           "heat": 1
         },
         {
           "name": "Malai Kofta",
-          "price": "28",
+          "price": "20",
           "desc": "Deep-fried vegetable and cheese dumplings in a creamy, mildly spicy sauce.",
           "type": "veg",
           "heat": 1
         },
         {
           "name": "Paneer Bhurji",
-          "price": "28",
+          "price": "20",
           "desc": "Scrambled paneer cooked with onion, tomato, green chili and butter.",
           "type": "veg",
           "heat": 1
         },
         {
           "name": "Sarson Da Saag",
-          "price": "24",
+          "price": "17",
           "desc": "Slow-cooked mustard greens and spinach finished with butter. A Punjabi winter classic.",
           "type": "veg"
         },
         {
           "name": "Shahi / Kadhai Paneer / Paneer Tikka Masala",
-          "price": "26 / 26 / 28",
+          "price": "18 / 18 / 20",
           "desc": "Shahi: paneer cubes cooked in a mildly spiced butter sauce. Kadhai: with bell peppers and onions. Tikka masala: grilled paneer cooked in a tomato-based gravy.",
           "type": "veg",
           "groups": [
@@ -673,15 +673,15 @@
               "list": [
                 {
                   "name": "Shahi Paneer",
-                  "price": "26"
+                  "price": "18"
                 },
                 {
                   "name": "Kadhai Paneer",
-                  "price": "26"
+                  "price": "18"
                 },
                 {
                   "name": "Paneer Tikka Masala",
-                  "price": "28"
+                  "price": "20"
                 }
               ]
             }
@@ -689,7 +689,7 @@
         },
         {
           "name": "Matar Paneer / Mushroom",
-          "price": "25 / 26",
+          "price": "18 / 18",
           "desc": "Paneer or mushroom and green peas cooked in a tomato-based gravy and aromatic spices.",
           "type": "veg",
           "groups": [
@@ -699,11 +699,11 @@
               "list": [
                 {
                   "name": "Matar Paneer",
-                  "price": "25"
+                  "price": "18"
                 },
                 {
                   "name": "Matar Mushroom",
-                  "price": "26"
+                  "price": "18"
                 }
               ]
             }
@@ -717,7 +717,7 @@
       "items": [
         {
           "name": "Butter Chicken",
-          "price": "28 / 29",
+          "price": "20 / 20",
           "desc": "Boneless or bone-in chicken cooked in a creamy tomato-based gravy, finished with a touch of butter.",
           "type": "meat",
           "groups": [
@@ -727,11 +727,11 @@
               "list": [
                 {
                   "name": "Boneless",
-                  "price": "28"
+                  "price": "20"
                 },
                 {
                   "name": "Bone-in",
-                  "price": "29"
+                  "price": "20"
                 }
               ]
             }
@@ -739,7 +739,7 @@
         },
         {
           "name": "Kadhai Chicken / Chicken Tikka Masala",
-          "price": "26 / 28",
+          "price": "18 / 20",
           "desc": "Kadhai: chicken cooked with bell peppers and onions in a tomato-based gravy. Tikka masala: grilled chicken in a tomato-based gravy.",
           "type": "meat",
           "groups": [
@@ -749,11 +749,11 @@
               "list": [
                 {
                   "name": "Kadhai Chicken",
-                  "price": "26"
+                  "price": "18"
                 },
                 {
                   "name": "Chicken Tikka Masala",
-                  "price": "28"
+                  "price": "20"
                 }
               ]
             }
@@ -761,7 +761,7 @@
         },
         {
           "name": "Korma",
-          "price": "28 / 29 / 30 / 30",
+          "price": "20 / 20 / 21 / 21",
           "desc": "Chicken, beef, lamb or goat in a rich, creamy gravy made with a blend of spices, finished with a touch of cream and coconut.",
           "type": "meat",
           "groups": [
@@ -771,19 +771,19 @@
               "list": [
                 {
                   "name": "Chicken",
-                  "price": "28"
+                  "price": "20"
                 },
                 {
                   "name": "Beef",
-                  "price": "29"
+                  "price": "20"
                 },
                 {
                   "name": "Lamb",
-                  "price": "30"
+                  "price": "21"
                 },
                 {
                   "name": "Goat",
-                  "price": "30"
+                  "price": "21"
                 }
               ]
             }
@@ -791,7 +791,7 @@
         },
         {
           "name": "Vindaloo",
-          "price": "28 / 29 / 30 / 30",
+          "price": "20 / 20 / 21 / 21",
           "desc": "Tender chicken, beef, lamb or goat cooked in a flavourful, spicy curry.",
           "type": "meat",
           "groups": [
@@ -801,19 +801,19 @@
               "list": [
                 {
                   "name": "Chicken",
-                  "price": "28"
+                  "price": "20"
                 },
                 {
                   "name": "Beef",
-                  "price": "29"
+                  "price": "20"
                 },
                 {
                   "name": "Lamb",
-                  "price": "30"
+                  "price": "21"
                 },
                 {
                   "name": "Goat",
-                  "price": "30"
+                  "price": "21"
                 }
               ]
             }
@@ -822,7 +822,7 @@
         },
         {
           "name": "Handi Chicken / Dhaba Chicken / Mango Chicken Curry",
-          "price": "26 / 28 / 29",
+          "price": "18 / 20 / 20",
           "desc": "Handi: chicken in a rich, aromatic gravy infused with spices and herbs. Dhaba: smoky bone-in chicken in the same rich gravy. Mango: chicken cooked in a flavourful mango curry.",
           "type": "meat",
           "groups": [
@@ -832,15 +832,15 @@
               "list": [
                 {
                   "name": "Handi Chicken",
-                  "price": "26"
+                  "price": "18"
                 },
                 {
                   "name": "Dhaba Chicken",
-                  "price": "28"
+                  "price": "20"
                 },
                 {
                   "name": "Mango Chicken Curry",
-                  "price": "29"
+                  "price": "20"
                 }
               ]
             }
@@ -848,7 +848,7 @@
         },
         {
           "name": "Lamb / Goat / Beef Curry",
-          "price": "30 / 30 / 29",
+          "price": "21 / 21 / 20",
           "desc": "Lamb, goat or beef cooked in a flavourful gravy made with a blend of spices, onions and tomatoes.",
           "type": "meat",
           "groups": [
@@ -858,15 +858,15 @@
               "list": [
                 {
                   "name": "Lamb",
-                  "price": "30"
+                  "price": "21"
                 },
                 {
                   "name": "Goat",
-                  "price": "30"
+                  "price": "21"
                 },
                 {
                   "name": "Beef",
-                  "price": "29"
+                  "price": "20"
                 }
               ]
             }
@@ -881,7 +881,7 @@
       "items": [
         {
           "name": "Veg Thaali / Combo",
-          "price": "32 / 20",
+          "price": "22 / 14",
           "desc": "Thaali: daal and two veg curries. Combo: paneer butter masala.",
           "type": "veg",
           "groups": [
@@ -891,11 +891,11 @@
               "list": [
                 {
                   "name": "Thaali",
-                  "price": "32"
+                  "price": "22"
                 },
                 {
                   "name": "Combo",
-                  "price": "20"
+                  "price": "14"
                 }
               ]
             }
@@ -905,7 +905,7 @@
         },
         {
           "name": "Non-Veg Thaali / Combo",
-          "price": "33 / 21",
+          "price": "23 / 15",
           "desc": "Thaali: butter chicken, lamb curry, chickpeas. Combo: butter chicken.",
           "type": "meat",
           "groups": [
@@ -915,11 +915,11 @@
               "list": [
                 {
                   "name": "Thaali",
-                  "price": "33"
+                  "price": "23"
                 },
                 {
                   "name": "Combo",
-                  "price": "21"
+                  "price": "15"
                 }
               ]
             }
@@ -932,11 +932,11 @@
     {
       "id": "favourites",
       "title": "Indian Favourites",
-      "note": "Extra bhatura +8 · extra chana +8.",
+      "note": "Extra bhatura +6 · extra chana +6.",
       "items": [
         {
           "name": "Chana Bhatura",
-          "price": "24",
+          "price": "17",
           "desc": "Chickpea curry with two puffed, deep-fried bhatura.",
           "type": "veg",
           "groups": [
@@ -946,11 +946,11 @@
               "list": [
                 {
                   "name": "Extra bhatura",
-                  "price": "8"
+                  "price": "6"
                 },
                 {
                   "name": "Extra chana",
-                  "price": "8"
+                  "price": "6"
                 }
               ]
             }
@@ -959,13 +959,13 @@
         },
         {
           "name": "Aloo Poori",
-          "price": "24",
+          "price": "17",
           "desc": "Potato curry with three hot, puffed pooris and pickle.",
           "type": "veg"
         },
         {
           "name": "Amritsari Kulcha",
-          "price": "24",
+          "price": "17",
           "desc": "Stuffed, tandoor-baked flatbread brushed with butter, served with chole or daal.",
           "type": "veg",
           "groups": [
@@ -987,7 +987,7 @@
         },
         {
           "name": "Baingan Bharta",
-          "price": "25",
+          "price": "18",
           "desc": "Fire-roasted eggplant mashed with onion, tomato and spices.",
           "type": "veg",
           "heat": 1
@@ -1002,7 +1002,7 @@
       "items": [
         {
           "name": "Hakka Noodles",
-          "price": "17 / 19 / 24",
+          "price": "12 / 13 / 17",
           "desc": "Thin noodles wok-tossed with cabbage, peppers, carrot, soy and chili.",
           "type": "protein",
           "heat": 1,
@@ -1013,15 +1013,15 @@
               "list": [
                 {
                   "name": "Veg",
-                  "price": "17"
+                  "price": "12"
                 },
                 {
                   "name": "Egg",
-                  "price": "19"
+                  "price": "13"
                 },
                 {
                   "name": "Chicken",
-                  "price": "24"
+                  "price": "17"
                 }
               ]
             }
@@ -1029,7 +1029,7 @@
         },
         {
           "name": "Fried Rice",
-          "price": "19 / 20 / 24",
+          "price": "13 / 14 / 17",
           "desc": "Basmati fried in the wok with vegetables, soy and spring onion.",
           "type": "protein",
           "groups": [
@@ -1039,15 +1039,15 @@
               "list": [
                 {
                   "name": "Veg",
-                  "price": "19"
+                  "price": "13"
                 },
                 {
                   "name": "Egg",
-                  "price": "20"
+                  "price": "14"
                 },
                 {
                   "name": "Chicken",
-                  "price": "24"
+                  "price": "17"
                 }
               ]
             }
@@ -1055,7 +1055,7 @@
         },
         {
           "name": "Chili Chicken",
-          "price": "24",
+          "price": "17",
           "desc": "Crispy chicken, peppers and onion in a sweet-sour chili sauce.",
           "type": "meat",
           "heat": 2,
@@ -1083,7 +1083,7 @@
       "items": [
         {
           "name": "Naan",
-          "price": "4 / 6 / 7 / 8",
+          "price": "3 / 4 / 5 / 6",
           "type": "veg",
           "groups": [
             {
@@ -1092,19 +1092,19 @@
               "list": [
                 {
                   "name": "Plain",
-                  "price": "4"
+                  "price": "3"
                 },
                 {
                   "name": "Butter",
-                  "price": "6"
+                  "price": "4"
                 },
                 {
                   "name": "Garlic",
-                  "price": "7"
+                  "price": "5"
                 },
                 {
                   "name": "Garlic chili",
-                  "price": "8"
+                  "price": "6"
                 }
               ]
             }
@@ -1112,7 +1112,7 @@
         },
         {
           "name": "Roti",
-          "price": "4 / 6 / 6 / 7",
+          "price": "3 / 4 / 4 / 5",
           "type": "veg",
           "groups": [
             {
@@ -1121,19 +1121,19 @@
               "list": [
                 {
                   "name": "Plain",
-                  "price": "4"
+                  "price": "3"
                 },
                 {
                   "name": "Butter",
-                  "price": "6"
+                  "price": "4"
                 },
                 {
                   "name": "Ghee",
-                  "price": "6"
+                  "price": "4"
                 },
                 {
                   "name": "Onion & green chili",
-                  "price": "7"
+                  "price": "5"
                 }
               ]
             }
@@ -1141,7 +1141,7 @@
         },
         {
           "name": "Paratha",
-          "price": "8 / 15 / 17 / 17 / 19",
+          "price": "6 / 11 / 12 / 12 / 13",
           "type": "veg",
           "groups": [
             {
@@ -1150,32 +1150,32 @@
               "list": [
                 {
                   "name": "Plain lachha",
-                  "price": "8"
+                  "price": "6"
                 },
                 {
                   "name": "Aloo",
-                  "price": "15"
+                  "price": "11"
                 },
                 {
                   "name": "Pyaz",
-                  "price": "17"
+                  "price": "12"
                 },
                 {
                   "name": "Gobi",
-                  "price": "17"
+                  "price": "12"
                 },
                 {
                   "name": "Paneer",
-                  "price": "19"
+                  "price": "13"
                 }
               ]
             }
           ],
-          "priceLabel": "8–19"
+          "priceLabel": "6–13"
         },
         {
           "name": "Rice",
-          "price": "7 / 8",
+          "price": "5 / 6",
           "type": "veg",
           "groups": [
             {
@@ -1184,11 +1184,11 @@
               "list": [
                 {
                   "name": "Plain basmati",
-                  "price": "7"
+                  "price": "5"
                 },
                 {
                   "name": "Cumin (jeera) rice",
-                  "price": "8"
+                  "price": "6"
                 }
               ]
             }
@@ -1196,7 +1196,7 @@
         },
         {
           "name": "Raita",
-          "price": "6 / 7 / 10",
+          "price": "4 / 5 / 7",
           "type": "veg",
           "groups": [
             {
@@ -1205,15 +1205,15 @@
               "list": [
                 {
                   "name": "Plain",
-                  "price": "6"
+                  "price": "4"
                 },
                 {
                   "name": "Veg (cucumber, tomato, onion)",
-                  "price": "7"
+                  "price": "5"
                 },
                 {
                   "name": "Boondi",
-                  "price": "10"
+                  "price": "7"
                 }
               ]
             }
@@ -1221,7 +1221,7 @@
         },
         {
           "name": "Salad",
-          "price": "7 / 8",
+          "price": "5 / 6",
           "type": "veg",
           "groups": [
             {
@@ -1230,11 +1230,11 @@
               "list": [
                 {
                   "name": "Spicy pickled onion",
-                  "price": "7"
+                  "price": "5"
                 },
                 {
                   "name": "Green garden salad",
-                  "price": "8"
+                  "price": "6"
                 }
               ]
             }
@@ -1242,12 +1242,12 @@
         },
         {
           "name": "Plain Yogurt",
-          "price": "6",
+          "price": "4",
           "type": "veg"
         },
         {
           "name": "Chutney & Pickle",
-          "price": "3",
+          "price": "2",
           "type": "veg",
           "groups": [
             {
@@ -1270,12 +1270,12 @@
         },
         {
           "name": "Mango Lassi",
-          "price": "11",
+          "price": "8",
           "type": "veg"
         },
         {
           "name": "Masala Chai",
-          "price": "6",
+          "price": "4",
           "type": "veg"
         }
       ]
@@ -1287,26 +1287,26 @@
       "items": [
         {
           "name": "Gulab Jamun Sticky Toffee",
-          "price": "12",
+          "price": "8",
           "desc": "Warm gulab jamun under jaggery toffee sauce with vanilla ice cream.",
           "type": "veg",
           "twist": true
         },
         {
           "name": "Gulab Jamun Sundae",
-          "price": "12",
+          "price": "8",
           "desc": "Two warm gulab jamun, two scoops of vanilla ice cream, rose syrup.",
           "type": "veg"
         },
         {
           "name": "Mango Sundae",
-          "price": "12",
+          "price": "8",
           "desc": "House mango kulfi, whipped cream and rose syrup.",
           "type": "veg"
         },
         {
           "name": "Kheer",
-          "price": "11",
+          "price": "8",
           "desc": "Slow-simmered rice pudding with saffron and cardamom, served chilled.",
           "type": "veg"
         }
@@ -1320,7 +1320,7 @@
       "items": [
         {
           "name": "Moose Bites",
-          "price": "13",
+          "price": "9",
           "aka": "Nuggets & Fries",
           "desc": "Crispy fried chicken nuggets, fries and honey-mango dip.",
           "type": "meat",
@@ -1328,14 +1328,14 @@
         },
         {
           "name": "Bollywood Butter Bowl",
-          "price": "15",
+          "price": "11",
           "aka": "Butter Chicken Rice Bowl",
           "desc": "Mild, creamy butter chicken over fluffy basmati rice.",
           "type": "meat"
         },
         {
           "name": "Cheesy Naan-wich",
-          "price": "12",
+          "price": "8",
           "aka": "Naan Grilled Cheese",
           "desc": "Buttery naan with gooey melted cheddar and a mild tomato dip.",
           "type": "veg",
@@ -1343,7 +1343,7 @@
         },
         {
           "name": "Maharaja Mac",
-          "price": "15",
+          "price": "11",
           "aka": "Butter Chicken Mac & Cheese",
           "desc": "Creamy cheddar mac stirred with mild butter chicken sauce.",
           "type": "meat",
@@ -1351,7 +1351,7 @@
         },
         {
           "name": "Build-a-Naan Pizza",
-          "price": "13",
+          "price": "9",
           "aka": "Naan Pizza",
           "desc": "Mild tomato sauce and mozzarella with up to three toppings.",
           "type": "veg",
@@ -1406,13 +1406,13 @@
       "items": [
         {
           "name": "Greystone Brewing",
-          "price": "11",
+          "price": "8",
           "desc": "16 oz · Fredericton, NB",
           "type": "veg"
         },
         {
           "name": "Maybee Brewing",
-          "price": "11",
+          "price": "8",
           "desc": "16 oz · Fredericton, NB",
           "type": "veg"
         }
@@ -1426,31 +1426,31 @@
       "items": [
         {
           "name": "Domestic Cans",
-          "price": "9",
+          "price": "6",
           "desc": "Budweiser · Molson Canadian · Keith's IPA · Moosehead · Michelob Ultra · Miller Lite · Sleeman Clear 2.0 · Pump House Radler",
           "type": "veg"
         },
         {
           "name": "Import Beer",
-          "price": "10",
+          "price": "7",
           "desc": "Heineken · Corona Extra · Stella Artois",
           "type": "veg"
         },
         {
           "name": "House Red or White",
-          "price": "11 / 15",
+          "price": "8 / 11",
           "desc": "Jackson-Triggs · 6 oz glass · 9 oz glass",
           "type": "veg"
         },
         {
           "name": "Modello Merlot",
-          "price": "13 / 19",
+          "price": "9 / 13",
           "desc": "Masi Modello · 6 oz glass · 9 oz glass",
           "type": "veg"
         },
         {
           "name": "Wine by the Carafe",
-          "price": "25 / 45",
+          "price": "18 / 31",
           "desc": "House wine · ½ litre · full litre",
           "type": "veg"
         }
@@ -1461,71 +1461,71 @@
       "title": "Mixed Drinks",
       "section": "bar",
       "dineInOnly": true,
-      "note": "1 oz · double +6.",
+      "note": "1 oz · double +4.",
       "items": [
         {
           "name": "Rum & Coke",
-          "price": "10",
+          "price": "7",
           "type": "veg"
         },
         {
           "name": "Vodka Soda",
-          "price": "10",
+          "price": "7",
           "type": "veg"
         },
         {
           "name": "Gin & Tonic",
-          "price": "10",
+          "price": "7",
           "type": "veg"
         },
         {
           "name": "Rye & Ginger",
-          "price": "10",
+          "price": "7",
           "type": "veg"
         },
         {
           "name": "Vodka Cran",
-          "price": "10",
+          "price": "7",
           "type": "veg"
         },
         {
           "name": "Screwdriver",
-          "price": "10",
+          "price": "7",
           "type": "veg"
         },
         {
           "name": "Caesar",
-          "price": "12",
+          "price": "8",
           "desc": "Rimmed, spiced, celery",
           "type": "veg"
         },
         {
           "name": "Whiskey Sour",
-          "price": "13",
+          "price": "9",
           "desc": "Shaken with lemon",
           "type": "veg"
         },
         {
           "name": "Tom Collins",
-          "price": "12",
+          "price": "8",
           "desc": "Gin, lemon, soda",
           "type": "veg"
         },
         {
           "name": "Margarita",
-          "price": "13",
+          "price": "9",
           "desc": "Tequila, lime, salt rim",
           "type": "veg"
         },
         {
           "name": "Mojito",
-          "price": "13",
+          "price": "9",
           "desc": "Rum, mint, lime",
           "type": "veg"
         },
         {
           "name": "Long Island",
-          "price": "16",
+          "price": "11",
           "desc": "The classic",
           "type": "veg"
         }
@@ -1536,56 +1536,56 @@
       "title": "High Shelf",
       "section": "bar",
       "dineInOnly": true,
-      "note": "1 oz · neat, rocks or mixed. Make any mixed drink high shelf +4.",
+      "note": "1 oz · neat, rocks or mixed. Make any mixed drink high shelf +3.",
       "items": [
         {
           "name": "Crown Royal",
-          "price": "11",
+          "price": "8",
           "type": "veg"
         },
         {
           "name": "Jameson",
-          "price": "11",
+          "price": "8",
           "type": "veg"
         },
         {
           "name": "Jack Daniel's",
-          "price": "11",
+          "price": "8",
           "type": "veg"
         },
         {
           "name": "Bombay Sapphire",
-          "price": "11",
+          "price": "8",
           "type": "veg"
         },
         {
           "name": "Grey Goose",
-          "price": "12",
+          "price": "8",
           "type": "veg"
         },
         {
           "name": "Hennessy VS",
-          "price": "13",
+          "price": "9",
           "type": "veg"
         },
         {
           "name": "Johnnie Walker Black",
-          "price": "13",
+          "price": "9",
           "type": "veg"
         },
         {
           "name": "Glenfiddich",
-          "price": "13",
+          "price": "9",
           "type": "veg"
         },
         {
           "name": "Chivas",
-          "price": "13",
+          "price": "9",
           "type": "veg"
         },
         {
           "name": "Patrón Silver",
-          "price": "15",
+          "price": "11",
           "type": "veg"
         }
       ]
@@ -1597,32 +1597,32 @@
       "items": [
         {
           "name": "Mango Lassi",
-          "price": "11",
-          "type": "veg"
-        },
-        {
-          "name": "Masala Chai",
-          "price": "6",
-          "type": "veg"
-        },
-        {
-          "name": "Virgin Mango Mule",
-          "price": "10",
-          "type": "veg"
-        },
-        {
-          "name": "Masala Soda",
-          "price": "11",
-          "type": "veg"
-        },
-        {
-          "name": "Corona Sunbrew 0.0%",
           "price": "8",
           "type": "veg"
         },
         {
-          "name": "Soft Drinks",
+          "name": "Masala Chai",
           "price": "4",
+          "type": "veg"
+        },
+        {
+          "name": "Virgin Mango Mule",
+          "price": "7",
+          "type": "veg"
+        },
+        {
+          "name": "Masala Soda",
+          "price": "8",
+          "type": "veg"
+        },
+        {
+          "name": "Corona Sunbrew 0.0%",
+          "price": "6",
+          "type": "veg"
+        },
+        {
+          "name": "Soft Drinks",
+          "price": "3",
           "desc": "Free refills when dining in",
           "type": "veg"
         }
