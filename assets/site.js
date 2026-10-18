@@ -1,3 +1,8 @@
+/* ================= ONLINE ORDERING SWITCH =================
+   false = no one can place orders through the site: the order page shows "coming soon"
+   and "Add to order" buttons are hidden. Set to true (and restore the Order buttons) to reopen. */
+const ORDERING_OPEN = false;
+
 /* ================= RENDER ================= */
 const $ = s => document.querySelector(s);
 const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));

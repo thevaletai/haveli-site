@@ -217,7 +217,22 @@ $("#cartClose").onclick = () => { cartEl.classList.remove("open"); document.body
 function pulseFab(){ const f = $("#cartFab"); f.classList.remove("pulse"); void f.offsetWidth; f.classList.add("pulse"); }
 
 /* ================= LOAD ================= */
+if (typeof ORDERING_OPEN !== "undefined" && !ORDERING_OPEN) {
+  document.querySelector(".order-layout").innerHTML = `<div class="order-closed">
+    <div class="eyebrow center">Coming soon</div>
+    <h2>Online ordering is <span class="gold">almost here</span></h2>
+    <p>We're putting the finishing touches on ordering through the website. For now, browse the full menu and come see us at 1033 Prospect St.</p>
+    <div class="fusion-cta"><a class="btn btn-gold" href="menu.html">See the Menu</a><a class="btn btn-ghost" href="index.html#visit">Find Us</a></div>
+  </div>`;
+  document.getElementById("cartFab")?.remove();
+  document.getElementById("optDialog")?.remove();
+  try { localStorage.removeItem(KEY_CART) } catch {}
+  throw "ordering closed"; // stop here: no menu, no cart, no way to send an order
+}
 (window.MENU_DATA ? Promise.resolve(window.MENU_DATA) : fetch("data/menu.json?v=" + Date.now(), { cache: "no-store" }).then(r => r.json()))
-  .then(d => { MENU = d; if (d.orderPhone) phone = d.orderPhone; renderMenu(); renderCart(); })
+  .then(d => { MENU = d; if (d.orderPhone) phone = d.orderPhone; renderMenu(); renderCart();
+    const m = location.hash.match(/^#add=(.+)$/);
+    if (m){ const key = decodeURIComponent(m[1]); history.replaceState(null, "", location.pathname); if (findItem(key)) { document.querySelector(`.o-item[data-key="${CSS.escape(key)}"]`)?.scrollIntoView({ block: "center" }); openItem(key); } }
+  })
   .catch(() => { listEl.innerHTML = `<p class="empty" style="display:block">The menu didn't load. Please refresh, or call us at ${prettyPhone(phone)}.</p>`; });
 function clone(o){ return JSON.parse(JSON.stringify(o)) }

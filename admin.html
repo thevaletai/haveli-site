@@ -324,6 +324,7 @@ function itemHtml(c, ci, it, ii){
         <label class="chk"><input type="checkbox" data-f="menuOnly"${it.menuOnly?" checked":""}> Menu only (can't be ordered online)</label>
         <label class="chk"><input type="checkbox" data-f="noCatGroups"${it.noCatGroups?" checked":""}> Don't offer this category's add-ons</label>
       </div>
+      <label class="f full">Allergens (optional, used by "Let Haveli pick")<input type="text" data-f="allergens" value="${esc((it.allergens||[]).join(", "))}" placeholder="e.g. dairy, nuts, gluten — leave blank to let the site guess from the description"></label>
       <label class="f full">Price wording on the menu (optional)<input type="text" data-f="priceLabel" value="${esc(it.priceLabel)}" placeholder="e.g. from 14.99 — leave blank to show the prices"></label>
       <div class="flags full" style="display:none">
       </div>
@@ -377,6 +378,7 @@ const itemOf = el => { const r=el.closest(".item"); return r && menu.categories[
 const ownerOf = el => el.closest("[data-owner]").dataset.owner==="item" ? itemOf(el) : catOf(el);
 const groupOf = el => { const o=ownerOf(el), g=el.closest("[data-g]"); return o && g && o.groups[+g.dataset.g]; };
 function setField(obj, f, el){
+  if (f==="allergens"){ const list=el.value.split(",").map(x=>x.trim().toLowerCase()).filter(Boolean); if (list.length) obj.allergens=list; else delete obj.allergens; return; }
   let v = el.type==="checkbox" ? el.checked : el.value;
   if (f==="heat"){ v=+v; if(!v){ delete obj.heat; return } }
   if (f==="price" && typeof v==="string") v = v.replace(/^\s*\$\s*/,"").trim();

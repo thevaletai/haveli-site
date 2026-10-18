@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=202610152008">
+<link rel="stylesheet" href="assets/site.css?v=202610181530">
 </head>
 <body class="page-menu">
 
@@ -51,7 +51,7 @@
       <a href="guide.html">Spice 101</a>
       <a href="index.html#room">Dining Room</a>
       <a href="index.html#visit">Visit</a>
-      <a class="btn btn-gold" href="order.html"><svg><use href="#i-bag"/></svg>Order Online</a>
+      <a class="btn btn-gold" href="menu.html">See the Menu</a>
     </nav>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><span></span></button>
   </div>
@@ -65,7 +65,7 @@
   <a href="guide.html">Spice 101</a>
   <a href="index.html#room">Dining Room</a>
   <a href="index.html#visit">Visit</a>
-  <a class="btn btn-gold" href="order.html">Order Online</a>
+  <a class="btn btn-gold" href="menu.html">See the Menu</a>
 </div>
 
 <main id="top">
@@ -86,6 +86,19 @@
 
 <section class="sec menu-sec" id="menu" style="padding-top:clamp(30px,5vw,50px)">
   <div class="wrap">
+    <section class="recommender open" id="recommender" aria-labelledby="rcTitle">
+      <button type="button" class="rc-toggle" id="rcToggle" aria-expanded="true" aria-controls="rcBody">
+        <span class="rc-badge"><svg aria-hidden="true"><use href="#i-spoon"/></svg></span>
+        <span class="rc-titles"><span class="eyebrow">Not sure what to order?</span><span class="rc-title" id="rcTitle">Let <span class="gold">Haveli</span> pick for you</span></span>
+        <span class="rc-caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="rc-body" id="rcBody">
+        <p class="rc-intro">Tell us what you like and we'll put together a meal from today's menu, with a reason for every pick.</p>
+        <form id="rcForm" class="rc-form" onsubmit="return false"></form>
+        <div class="rc-go-row"><button type="button" class="btn btn-gold" id="rcGo">Find my dishes</button><button type="button" class="rc-reset" id="rcReset">Start over</button></div>
+        <div class="rc-results" id="rcResults" hidden aria-live="polite"></div>
+      </div>
+    </section>
     <div class="menu-head">
       <div class="menu-tools">
         <label class="search"><span class="sr">Search the menu</span>
@@ -101,7 +114,6 @@
     <div id="menuBody"></div>
     <p class="empty" id="empty">Nothing matches that. Try “butter chicken”, “naan” or “wings”.</p>
     <div class="menu-foot">
-      <a class="btn btn-gold" href="order.html"><svg><use href="#i-bag"/></svg>Order Pickup or Delivery</a>
       <a class="btn btn-ghost" href="guide.html">New to Indian food?</a>
     </div>
   </div>
@@ -115,7 +127,7 @@
     <div class="divider"><i></i><svg class="leaf" style="color:var(--gold)"><use href="#i-leaf"/></svg><i></i></div>
     <p class="tag">Indian roots · Canadian home · Better together</p>
     <nav class="fnav" aria-label="Footer">
-      <a href="menu.html">Menu</a><a href="guide.html">Spice 101</a><a href="order.html">Order Online</a><a href="index.html#reserve">Reservations</a><a href="mailto:support@havelibarandgrill.com?subject=Careers%20at%20Haveli">Careers</a><a href="index.html#visit">Contact</a>
+      <a href="menu.html">Menu</a><a href="guide.html">Spice 101</a><a href="index.html#reserve">Reservations</a><a href="mailto:support@havelibarandgrill.com?subject=Careers%20at%20Haveli">Careers</a><a href="index.html#visit">Contact</a>
     </nav>
     <div class="fine">
       <span>© <span id="yr"></span> Haveli Indian Fusion Bar &amp; Grill · Fredericton, New Brunswick</span>
@@ -125,11 +137,12 @@
 
 <nav class="actionbar" id="actionbar" aria-label="Quick actions">
   <a href="tel:+15064551717"><svg><use href="#i-phone"/></svg>Call</a>
-  <a class="main" href="order.html"><svg><use href="#i-bag"/></svg>Order</a>
+  <a class="main" href="menu.html"><svg><use href="#i-bag"/></svg>Menu</a>
   <a href="https://www.google.com/maps/search/?api=1&query=Haveli+Indian+Bar+and+Grill+1033+Prospect+St+Fredericton+NB" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg>Directions</a>
 </nav>
 
-<script src="assets/site.js?v=202610152008"></script>
-<script src="assets/menu.js?v=202610152008"></script>
+<script src="assets/site.js?v=202610181530"></script>
+<script src="assets/recommend.js?v=202610181530"></script>
+<script src="assets/menu.js?v=202610181530"></script>
 </body>
 </html>
