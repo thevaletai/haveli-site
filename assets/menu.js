@@ -19,7 +19,7 @@ function heatPill(h){
 }
 function renderMenu(){
   const q = $("#q").value.trim().toLowerCase();
-  const veg = $("#vegOnly").checked, tw = $("#twistOnly").checked;
+  const veg = $("#vegOnly").checked;
   const rx = q ? new RegExp("(" + q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&") + ")","ig") : null;
   const hl = s => rx ? esc(s||"").replace(rx,"<mark>$1</mark>") : esc(s||"");
   let shown = 0;
@@ -28,7 +28,6 @@ function renderMenu(){
     const items = c.items.filter(it=>{
       if (it.hidden) return false;
       if (veg && it.type==="meat") return false;
-      if (tw && !it.twist) return false;
       if (q && ![it.name,it.aka,it.desc,c.title].join(" ").toLowerCase().includes(q)) return false;
       return true;
     });
@@ -50,7 +49,7 @@ function renderMenu(){
       ${catGroupsHtml(c)}
       <div class="items">${items.map(it=>{
         const kind = {meat:"n",protein:"p"}[it.type] || "v";
-        const title = {n:"Contains meat or fish",p:"Choose your protein",v:"Vegetarian"}[kind];
+        const title = {n:"Non-vegetarian",p:"Your choice",v:"Vegetarian"}[kind];
         const p = displayPrice(it);
         return `<div class="item">
           <div class="item-top">
@@ -71,7 +70,6 @@ chips.addEventListener("click", e=>{
 });
 let tmr; $("#q").addEventListener("input",()=>{clearTimeout(tmr);tmr=setTimeout(renderMenu,120)});
 $("#vegOnly").addEventListener("change",renderMenu);
-$("#twistOnly").addEventListener("change",renderMenu);
 
 let catObs;
 function setChip(id){

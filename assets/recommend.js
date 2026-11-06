@@ -12,7 +12,7 @@
   const Q = {
     cravings: { label: "What are you craving?", multi: true, options: [
       ["creamy", "Rich & creamy"], ["smoky", "Smoky, from the tandoor"], ["street", "Street food & snacks"],
-      ["rice", "Biryani & rice"], ["wok", "Indo-Chinese"], ["fusion", "Canadian twists"],
+      ["rice", "Biryani & rice"], ["wok", "Indo-Chinese"], ["mughlai", "Royal Mughlai"],
       ["comfort", "Lentils & home-style"], ["sweet", "Something sweet"] ] },
     diet: { label: "How do you eat?", options: [["any", "I eat everything"], ["veg", "Vegetarian"]] },
     proteins: { label: "Favourite proteins", multi: true, hideWhen: { diet: "veg" }, options: [
@@ -45,21 +45,22 @@
     [...(it.groups || []), ...(it.noCatGroups ? [] : (cat.groups || []))].forEach(g => g.list.forEach(o => { const n = o.name.toLowerCase();
       if (/chicken/.test(n)) p.proteins.add("chicken"); if (/beef/.test(n)) p.proteins.add("beef"); if (/paneer/.test(n)) p.proteins.add("paneer");
       if (/lamb|goat/.test(n)) p.proteins.add("lamb"); if (/fish|shrimp/.test(n)) p.proteins.add("fish"); }));
-    p.isDrink = cat.section === "bar";
+    p.isDrink = cat.section === "bar" || cat.id === "beverages";
     // cravings
     if (has(t, ["cream", "butter", "korma", "malai", "makhani", "coconut", "cashew", "kofta", "handi", "mango curry", "mac"])) p.tags.add("creamy");
     if (has(t, ["tandoor", "tikka", "grill", "charred", "clay"])) p.tags.add("smoky");
-    if (["starters", "street"].includes(cat.id) || has(t, ["chaat", "pav", "puri", "slider", "nachos", "pakora", "samosa", "fritter"])) p.tags.add("street");
+    if (cat.id === "veg-appetizers" || has(t, ["chaat", "puri", "pakoda", "samosa", "momo"])) p.tags.add("street");
     if (has(t, ["biryani", "rice"])) p.tags.add("rice");
-    if (cat.id === "indo-chinese" || has(t, ["hakka", "chilli", "chili glaze", "manchurian", "noodle"])) p.tags.add("wok");
-    if (it.twist) p.tags.add("fusion");
-    if (cat.section === "bar") { p.tags.clear(); if (has(t, ["mango", "colada", "lassi", "sweet"])) p.tags.add("sweet"); }
+    if (cat.id === "indo-chinese" || has(t, ["hakka", "chilli", "manchurian", "noodle", "momo"])) p.tags.add("wok");
+    if (cat.id === "mughlai") p.tags.add("mughlai");
+    if (["breads", "salad-raita"].includes(cat.id)) p.tags.delete("creamy");
+    if (cat.section === "bar" || cat.id === "beverages") { p.tags.clear(); if (has(t, ["mango", "colada", "lassi", "sweet"])) p.tags.add("sweet"); }
     if (has(t, ["daal", "dal ", "lentil", "chana", "chickpea", "saag", "aloo", "home-style", "homestyle"])) p.tags.add("comfort");
     if (cat.id === "desserts" || has(t, ["gulab", "kheer", "sundae", "kulfi", "toffee"])) p.tags.add("sweet");
     // allergens: the admin's list wins; otherwise read them from the description
     if (Array.isArray(it.allergens)) it.allergens.forEach(a => p.allergens.add(a));
     else {
-      if (has(t, ["cashew", "almond", "pistachio", "peanut", "nut "])) p.allergens.add("nuts");
+      if (has(t, ["cashew", "almond", "pistachio", "peanut", "nuts"])) p.allergens.add("nuts");
       if (has(t, ["cream", "butter", "yogurt", "yoghurt", "paneer", "cheese", "cheddar", "mozzarella", "ghee", "malai", "kulfi", "ice cream", "raita", "lassi", "curd", "milk", "kheer", "makhani", "mac", "naan", "kulcha", "bhatura", "paratha", "colada", "chai"])) p.allergens.add("dairy");
       if (has(t, ["naan", "roti", "paratha", "bread", "bun", "pav", "brioche", "breaded", "noodle", "wrap", "puri", "poori", "bhatura", "kulcha", "papdi", "samosa", "pizza", "soy", "mac"])) p.allergens.add("gluten");
     }
@@ -81,7 +82,7 @@
     // cravings
     const hits = a.cravings.filter(c => p.tags.has(c));
     s += hits.length * 4;
-    hits.forEach(c => why.push({ creamy: "rich and creamy", smoky: "charred in the tandoor", street: "street-food style", rice: "fragrant rice", wok: "wok-tossed Indo-Chinese", fusion: "a Canadian twist", comfort: "home-style comfort", sweet: "a sweet finish" }[c]));
+    hits.forEach(c => why.push({ creamy: "rich and creamy", smoky: "charred in the tandoor", street: "street-food style", rice: "fragrant rice", wok: "wok-tossed Indo-Chinese", mughlai: "from the royal Mughlai kitchen", comfort: "home-style comfort", sweet: "a sweet finish" }[c]));
     // proteins
     if (a.diet !== "veg" && a.proteins.length) {
       const ph = a.proteins.filter(x => p.proteins.has(x));
@@ -95,15 +96,16 @@
     // sensible defaults so every pick has a reason
     if (!why.length) {
       const n = it.name.toLowerCase();
-      if (cat.id === "sides") why.push(/rice/.test(n) ? "goes with everything" : /raita|yogurt/.test(n) ? "cools the heat" : "to scoop up every bit");
+      if (["breads", "salad-raita", "biryani"].includes(cat.id)) why.push(/rice/.test(n) ? "goes with everything" : /raita|yogurt/.test(n) ? "cools the heat" : "to scoop up every bit");
       else if (cat.id === "desserts") why.push("a sweet finish");
-      else if (p.isDrink) why.push(/nb|brewing/i.test(it.desc || "") ? "a local NB brew" : cat.id === "zero-proof" ? "alcohol-free" : "pairs well with spice");
+      else if (p.isDrink) why.push(/nb|brewing/i.test(it.desc || "") ? "a local NB brew" : cat.id === "zero-proof" || cat.id === "beverages" ? "alcohol-free" : "pairs well with spice");
     }
     // style
     if (a.style === "familiar" && it.chefsPick) { s += 3; why.unshift("a Haveli favourite"); }
     else if (it.chefsPick) { s += 1; }
-    if (a.style === "new" && it.twist) { s += 3; if (!why.includes("a Canadian twist")) why.push("a Canadian twist"); }
     if (a.style === "new" && !it.chefsPick && it.desc) s += 0.5;
+    // the natural default drink with curry
+    if (it.name === "Mango Lassi") s += 1;
     // kids
     if (a.age === "kid" && cat.id === "kids") { s += 6; why.unshift("made for kids, zero spice"); }
     return { p, s, why: [...new Set(why.filter(Boolean))].slice(0, 3) };
@@ -111,12 +113,12 @@
 
   /* ---------- build the meal ---------- */
   const COURSE = {
-    starter: c => ["starters", "wings"].includes(c.id),
-    main: c => ["street", "tandoor", "biryani", "curries", "thaali", "favourites", "indo-chinese", "wings"].includes(c.id),
-    side: c => c.id === "sides",
+    starter: c => ["veg-appetizers", "nonveg-appetizers", "tandoori-veg", "tandoori-nonveg"].includes(c.id),
+    main: c => ["veg-curries", "nonveg-curries", "mughlai", "biryani", "indo-chinese"].includes(c.id),
+    side: c => ["breads", "salad-raita", "biryani"].includes(c.id),
     dessert: c => c.id === "desserts",
     kids: c => c.id === "kids",
-    drink: c => c.section === "bar",
+    drink: c => c.section === "bar" || c.id === "beverages",
   };
   function pick(all, test, n, used, opts = {}){
     const out = [], cats = new Set();
@@ -127,7 +129,7 @@
       out.push(r); cats.add(r.p.cat.id); used.add(r.p.it.name);
     }
     // top up if spreading across sections left gaps
-    if (out.length < n) for (const r of all.filter(r => test(r.p.cat) && !used.has(r.p.it.name) && !r.p.it.menuOnly).sort((a, b) => b.s - a.s)) {
+    if (out.length < n) for (const r of all.filter(r => test(r.p.cat) && !used.has(r.p.it.name) && !r.p.it.menuOnly && (!opts.filter || opts.filter(r))).sort((a, b) => b.s - a.s)) {
       if (out.length >= n) break; out.push(r); used.add(r.p.it.name);
     }
     return out;
@@ -145,13 +147,13 @@
     } else {
       const wantsSweetOnly = a.cravings.length === 1 && a.cravings[0] === "sweet";
       if (a.hunger !== "light" || groupN > 1) sections.push(["Start with", pick(all, COURSE.starter, a.hunger === "starving" || groupN >= 3 ? 2 : 1, used)]);
-      if (!wantsSweetOnly) sections.push([groupN > 1 ? "Mains to share" : "Your main", pick(all, COURSE.main, a.hunger === "light" ? 1 : Math.min(groupN, 3), used, { spread: true })]);
+      if (!wantsSweetOnly) sections.push([groupN > 1 ? "Mains to share" : "Your main", pick(all, COURSE.main, a.hunger === "light" ? 1 : Math.min(groupN, 3), used, { spread: true, filter: r => !/^(plain rice|jeera rice)$/i.test(r.p.it.name) })]);
       if (a.hunger !== "light") sections.push(["On the side", pick(all, COURSE.side, a.hunger === "starving" || groupN >= 3 ? 2 : 1, used,
-        { filter: r => /naan|roti|paratha|rice|raita|kulcha/i.test(r.p.it.name) })]);
+        { filter: r => /^(plain rice|jeera rice|tandoori roti|butter roti|plain naan|butter naan|garlic naan|missi roti|mirchi onion roti|lachha paratha|cheese naan|raita boondi|veg raita)$/i.test(r.p.it.name) })]);
       if (a.group === "family") sections.push(["For the kids", pick(all, COURSE.kids, 1, used)]);
       if (a.cravings.includes("sweet") || a.hunger === "starving" || groupN >= 3) sections.push(["Sweet finish", pick(all, COURSE.dessert, 1, used)]);
-      const zeroProof = cats.find(c => c.id === "zero-proof");
-      const drinks = a.age === "adult" ? pick(all, COURSE.drink, 1, used) : pick(all, c => c === zeroProof, 1, used);
+      const alcoholFree = c => c.id === "zero-proof" || c.id === "beverages";
+      const drinks = a.age === "adult" ? pick(all, COURSE.drink, 1, used) : pick(all, alcoholFree, 1, used);
       sections.push(["To drink", drinks]);
     }
     return sections.filter(([, list]) => list.length);
