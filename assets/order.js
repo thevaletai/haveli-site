@@ -222,7 +222,7 @@ if (typeof ORDERING_OPEN !== "undefined" && !ORDERING_OPEN) {
     <div class="eyebrow center">Coming soon</div>
     <h2>Online ordering is <span class="gold">almost here</span></h2>
     <p>We're putting the finishing touches on ordering through the website. For now, browse the full menu and come see us at 1033 Prospect St.</p>
-    <div class="fusion-cta"><a class="btn btn-gold" href="menu.html">See the Menu</a><a class="btn btn-ghost" href="index.html#visit">Find Us</a></div>
+    <div class="fusion-cta"><a class="btn btn-gold" href="full-menu.html">See the Menu</a><a class="btn btn-ghost" href="index.html#visit">Find Us</a></div>
   </div>`;
   document.getElementById("cartFab")?.remove();
   document.getElementById("optDialog")?.remove();

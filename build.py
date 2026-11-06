@@ -4,7 +4,7 @@ def uri(path):
     return 'data:image/webp;base64,' + base64.b64encode(open(path,'rb').read()).decode()
 css = open('assets/site.css').read()
 css = re.sub(r'url\(([\w-]+\.webp)\)', lambda m: f'url({uri("assets/"+m.group(1))})', css)
-names = {'index.html': 'haveli-home.html', 'menu.html': 'haveli-menu.html', 'guide.html': 'haveli-spice-101.html', 'order.html': 'haveli-order.html'}
+names = {'index.html': 'haveli-home.html', 'full-menu.html': 'haveli-menu.html', 'guide.html': 'haveli-spice-101.html', 'order.html': 'haveli-order.html'}
 for src, out in names.items():
     s = open(src).read()
     s = re.sub(r'<link rel="stylesheet" href="assets/site\.css(?:\?v=\w+)?">', lambda m: f'<style>\n{css}</style>', s)
